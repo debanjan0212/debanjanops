@@ -1,10 +1,19 @@
 import { useState } from 'react';
-import { Mail, Phone, Linkedin, Github, Send, MapPin } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Send, MapPin, Loader2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
+import { z } from 'zod';
+
+// Form validation schema
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters")
+});
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,15 +22,60 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // EmailJS configuration - You'll need to replace these with your actual values
+  const EMAILJS_SERVICE_ID = 'your_service_id'; // Replace with your EmailJS service ID
+  const EMAILJS_TEMPLATE_ID = 'your_template_id'; // Replace with your EmailJS template ID
+  const EMAILJS_PUBLIC_KEY = 'your_public_key'; // Replace with your EmailJS public key
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend service
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', message: '' });
+    setIsLoading(true);
+
+    try {
+      // Validate form data
+      const validatedData = contactSchema.parse(formData);
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: validatedData.name,
+          from_email: validatedData.email,
+          message: validatedData.message,
+          to_email: 'itsdebanjandas@gmail.com', // Your email
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        toast({
+          title: "Message Sent Successfully!",
+          description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Failed to Send Message",
+          description: "Please check your EmailJS configuration or try again later.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -183,10 +237,20 @@ const Contact = () => {
 
                   <Button 
                     type="submit"
-                    className="w-full bg-golden hover:bg-golden-dark text-coffee-dark font-semibold py-3 rounded-lg transition-bounce"
+                    disabled={isLoading}
+                    className="w-full bg-golden hover:bg-golden-dark text-coffee-dark font-semibold py-3 rounded-lg transition-bounce disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
-                    <Send className="ml-2 w-4 h-4" />
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="ml-2 w-4 h-4" />
+                      </>
+                    )}
                   </Button>
                 </form>
               </CardContent>
