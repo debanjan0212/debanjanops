@@ -24,10 +24,10 @@ const Contact = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  // EmailJS configuration - You'll need to replace these with your actual values
-  const EMAILJS_SERVICE_ID = 'your_service_id'; // Replace with your EmailJS service ID
-  const EMAILJS_TEMPLATE_ID = 'your_template_id'; // Replace with your EmailJS template ID
-  const EMAILJS_PUBLIC_KEY = 'your_public_key'; // Replace with your EmailJS public key
+  // EmailJS configuration
+  const EMAILJS_SERVICE_ID = 'service_d2tpiun';
+  const EMAILJS_TEMPLATE_ID = 'template_wj87ai6';
+  const EMAILJS_PUBLIC_KEY = 'AtyFW3qsDkf98KhYZ';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
