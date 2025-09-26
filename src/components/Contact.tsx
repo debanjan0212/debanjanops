@@ -12,6 +12,7 @@ import { z } from 'zod';
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Please enter a valid email address").max(255, "Email must be less than 255 characters"),
+  subject: z.string().trim().min(3, "Subject must be at least 3 characters").max(200, "Subject must be less than 200 characters"),
   message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters")
 });
 
@@ -20,6 +21,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -44,6 +46,7 @@ const Contact = () => {
         {
           from_name: validatedData.name,
           from_email: validatedData.email,
+          subject: validatedData.subject,
           message: validatedData.message,
           to_email: 'itsdebanjandas@gmail.com', // Your email
         },
@@ -55,7 +58,7 @@ const Contact = () => {
           title: "Message Sent Successfully!",
           description: "Thank you for reaching out. I'll get back to you within 24 hours.",
         });
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
       }
     } catch (error) {
       console.error('EmailJS Error:', error);
@@ -93,7 +96,7 @@ const Contact = () => {
             Let's Connect
           </h2>
           <p className="text-xl text-beige-light max-w-3xl mx-auto">
-            Ready to discuss your next DevOps project or SRE challenge? Let's talk about how we can work together.
+            Ready to collaborate or discuss opportunities? I'd love to hear from you and explore how we can work together.
           </p>
         </div>
 
@@ -108,8 +111,8 @@ const Contact = () => {
                 Let's talk.
               </h4>
               <p className="text-beige-light leading-relaxed mb-8">
-                Whether you need DevOps consulting, infrastructure automation, or SRE expertise, 
-                I'm here to help transform your operations and drive reliability at scale.
+                Whether you're looking for DevOps consulting, infrastructure expertise, or collaboration opportunities, 
+                I'm here to help drive innovation and reliability in your technology operations.
               </p>
             </div>
 
@@ -183,10 +186,10 @@ const Contact = () => {
             <Card className="bg-warm-white/10 backdrop-blur-sm border-0 shadow-strong">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold text-warm-white mb-2">
-                  Estimate your project?
+                  Get in Touch
                 </h3>
                 <p className="text-beige-light mb-8">
-                  Let me know here.
+                  Let me know how I can help you.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -222,7 +225,22 @@ const Contact = () => {
 
                   <div>
                     <label className="block text-warm-white font-medium mb-2">
-                      Tell me about your project
+                      Subject
+                    </label>
+                    <Input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      className="bg-warm-white/20 border-warm-white/30 text-warm-white placeholder:text-beige-light focus:border-golden"
+                      placeholder="What would you like to discuss?"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-warm-white font-medium mb-2">
+                      Reason for reaching out
                     </label>
                     <Textarea
                       name="message"
@@ -231,7 +249,7 @@ const Contact = () => {
                       required
                       rows={5}
                       className="bg-warm-white/20 border-warm-white/30 text-warm-white placeholder:text-beige-light focus:border-golden resize-none"
-                      placeholder="Describe your DevOps/SRE needs, infrastructure challenges, or any specific requirements..."
+                      placeholder="Tell me about your requirements, collaboration ideas, or any questions you have..."
                     />
                   </div>
 
