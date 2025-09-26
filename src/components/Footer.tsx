@@ -40,11 +40,11 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-warm-white mb-4">Get In Touch</h4>
             <div className="space-y-3">
               <a 
-                href="mailto:debanjan.das@example.com"
+                href="mailto:itsdebanjandas@gmail.com"
                 className="flex items-center text-beige-light hover:text-golden transition-smooth"
               >
                 <Mail className="w-4 h-4 mr-2" />
-                debanjan.das@example.com
+                itsdebanjandas@gmail.com
               </a>
               <a 
                 href="https://linkedin.com/in/debanjandas"
@@ -78,7 +78,7 @@ const Footer = () => {
             
             <div className="flex space-x-4">
               <a 
-                href="mailto:debanjan.das@example.com"
+                href="mailto:itsdebanjandas@gmail.com"
                 className="text-beige-light hover:text-golden transition-smooth"
               >
                 <Mail className="w-5 h-5" />
