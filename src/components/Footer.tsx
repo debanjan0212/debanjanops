@@ -47,7 +47,7 @@ const Footer = () => {
                 itsdebanjandas@gmail.com
               </a>
               <a 
-                href="https://linkedin.com/in/debanjandas"
+                href="https://www.linkedin.com/in/debanjan0212/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-beige-light hover:text-golden transition-smooth"
@@ -84,7 +84,7 @@ const Footer = () => {
                 <Mail className="w-5 h-5" />
               </a>
               <a 
-                href="https://linkedin.com/in/debanjandas"
+                href="https://www.linkedin.com/in/debanjan0212/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-beige-light hover:text-golden transition-smooth"
