@@ -155,7 +155,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold">LinkedIn</div>
-                  <div className="text-beige-light">Page makeover in progress</div>
+                  <div className="text-beige-light">linkedin.com/in/debanjan0212</div>
                 </div>
               </a>
 
