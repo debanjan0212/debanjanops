@@ -8,33 +8,63 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Coffee/Beige Color Palette */
+    --background: 42 33% 97%;
+    --foreground: 30 27% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 40 50% 95%;
+    --card-foreground: 30 27% 8%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 33% 97%;
+    --popover-foreground: 30 27% 8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Coffee Brown Primary */
+    --primary: 25 31% 24%;
+    --primary-foreground: 42 33% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Warm Beige Secondary */
+    --secondary: 35 25% 85%;
+    --secondary-foreground: 30 27% 8%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Cream Muted */
+    --muted: 40 20% 90%;
+    --muted-foreground: 30 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Warm Accent - Golden Coffee */
+    --accent: 38 90% 65%;
+    --accent-foreground: 30 27% 8%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 42 33% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 15% 85%;
+    --input: 35 15% 85%;
+    --ring: 38 90% 65%;
+
+    /* Custom Portfolio Colors */
+    --coffee-dark: 20 25% 15%;
+    --coffee-medium: 25 31% 24%;
+    --coffee-light: 30 20% 35%;
+    --beige-light: 40 25% 88%;
+    --beige-medium: 35 25% 82%;
+    --cream: 42 33% 94%;
+    --warm-white: 42 33% 97%;
+    --golden: 38 90% 65%;
+    --golden-dark: 35 75% 55%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--coffee-dark)), hsl(var(--coffee-medium)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--warm-white)), hsl(var(--cream)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--golden)), hsl(var(--golden-dark)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -2px hsl(var(--coffee-light) / 0.1);
+    --shadow-medium: 0 8px 30px -4px hsl(var(--coffee-medium) / 0.15);
+    --shadow-strong: 0 12px 40px -8px hsl(var(--coffee-dark) / 0.2);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -56,33 +86,44 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Coffee Theme */
+    --background: 20 25% 8%;
+    --foreground: 42 33% 97%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 20 25% 12%;
+    --card-foreground: 42 33% 97%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 20 25% 8%;
+    --popover-foreground: 42 33% 97%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 38 90% 65%;
+    --primary-foreground: 20 25% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 25 20% 18%;
+    --secondary-foreground: 42 33% 97%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 25 15% 15%;
+    --muted-foreground: 35 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 38 90% 65%;
+    --accent-foreground: 20 25% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 42 33% 97%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 38 90% 65%;
+
+    --coffee-dark: 20 25% 8%;
+    --coffee-medium: 25 20% 15%;
+    --coffee-light: 30 15% 25%;
+    --beige-light: 35 15% 25%;
+    --beige-medium: 30 15% 20%;
+    --cream: 25 15% 15%;
+    --warm-white: 20 25% 12%;
+    --golden: 38 90% 65%;
+    --golden-dark: 35 75% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +141,44 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-strong {
+    box-shadow: var(--shadow-strong);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
   }
 }
