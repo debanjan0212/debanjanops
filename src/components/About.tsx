@@ -1,9 +1,7 @@
 import { GraduationCap, MapPin, Calendar } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-
 const About = () => {
-  return (
-    <section id="about" className="py-20 bg-warm-white">
+  return <section id="about" className="py-20 bg-warm-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-coffee-dark mb-6">
@@ -19,18 +17,16 @@ const About = () => {
           {/* Bio Section */}
           <div className="space-y-6">
             <div className="prose prose-lg">
-              <p className="text-coffee-medium leading-relaxed text-lg">
-                Debanjan Das is a DevOps and Site Reliability Engineer with over 7 years of experience 
-                in automation, cloud infrastructure, and incident management. With a background in 
-                Electrical and Electronics Engineering (B.Tech, VIT Vellore, 2018), Debanjan has worked 
-                with leading companies including Capgemini, TCS, TransUnion, and currently serves as 
-                Senior SRE at Signeasy.
-              </p>
-              <p className="text-coffee-medium leading-relaxed text-lg">
-                His expertise spans cloud-native solutions, infrastructure automation, monitoring, 
-                and cost optimization. Debanjan is passionate about leveraging cutting-edge technologies 
-                and AI tools to solve complex infrastructure challenges and drive operational excellence.
-              </p>
+              <p className="text-coffee-medium leading-relaxed text-lg">Hi, I’m Debanjan Das, a Senior Site Reliability Engineer (SRE) and DevOps Specialist with over 7 years of experience building, automating, and scaling reliable cloud systems.
+
+I began my journey in technology with a B.Tech in Electrical and Electronics Engineering from VIT Vellore (2018), and since then, I’ve worked with some of the world’s leading organizations including Capgemini, TCS, TransUnion, and now Signeasy. My career has been shaped around cloud-native solutions, infrastructure automation, monitoring, and cost optimization, enabling businesses to run smoothly and efficiently.
+
+I’m deeply passionate about automation and operational excellence — whether it’s creating scalable architectures with Terraform, Ansible, and Kubernetes, optimizing cloud infrastructure on AWS, or designing CI/CD pipelines with Jenkins and ArgoCD. I thrive on solving complex infrastructure challenges and ensuring systems are always resilient, secure, and cost-effective.
+
+Beyond traditional DevOps, I enjoy exploring AI-driven tools like ChatGPT, Anthropix, Perplexity, and Cursor, integrating them into workflows to enhance productivity and innovation.
+
+When I’m not engineering systems, I’m constantly learning, experimenting with new technologies, and refining processes that make engineering teams more efficient and organizations more agile.</p>
+              
             </div>
           </div>
 
@@ -87,8 +83,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
