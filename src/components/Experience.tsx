@@ -35,8 +35,67 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-20 bg-beige-dark relative overflow-hidden">
+      {/* Floating DevOps Logos Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Terraform */}
+        <div className="floating-element animate-float-3d-1" style={{ top: '10%', left: '5%' }}>
+          <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-blue-600/20 rounded-lg backdrop-blur-sm border border-white/10 flex items-center justify-center text-purple-400 font-bold text-xs transform-gpu perspective-1000 rotateX-12 rotateY-12">
+            TF
+          </div>
+        </div>
+        
+        {/* Docker */}
+        <div className="floating-element animate-float-3d-2" style={{ top: '25%', right: '8%' }}>
+          <div className="w-14 h-14 bg-gradient-to-br from-blue-500/20 to-blue-700/20 rounded-xl backdrop-blur-sm border border-white/10 flex items-center justify-center text-blue-400 font-bold text-xs transform-gpu perspective-1000 rotateX-15 rotateY-15">
+            🐳
+          </div>
+        </div>
+        
+        {/* Kubernetes */}
+        <div className="floating-element animate-float-3d-3" style={{ top: '45%', left: '10%' }}>
+          <div className="w-16 h-16 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 rounded-full backdrop-blur-sm border border-white/10 flex items-center justify-center text-blue-300 font-bold text-sm transform-gpu perspective-1000 rotateX-20 rotateY-10">
+            ⚙️
+          </div>
+        </div>
+        
+        {/* AWS */}
+        <div className="floating-element animate-float-3d-4" style={{ top: '70%', right: '15%' }}>
+          <div className="w-13 h-13 bg-gradient-to-br from-orange-500/20 to-yellow-600/20 rounded-lg backdrop-blur-sm border border-white/10 flex items-center justify-center text-orange-400 font-bold text-xs transform-gpu perspective-1000 rotateX-18 rotateY-12">
+            AWS
+          </div>
+        </div>
+        
+        {/* Jenkins */}
+        <div className="floating-element animate-float-3d-5" style={{ top: '15%', left: '70%' }}>
+          <div className="w-12 h-12 bg-gradient-to-br from-red-500/20 to-blue-600/20 rounded-xl backdrop-blur-sm border border-white/10 flex items-center justify-center text-red-400 font-bold text-xs transform-gpu perspective-1000 rotateX-10 rotateY-20">
+            ⚡
+          </div>
+        </div>
+        
+        {/* Git */}
+        <div className="floating-element animate-float-3d-6" style={{ top: '60%', left: '75%' }}>
+          <div className="w-10 h-10 bg-gradient-to-br from-red-600/20 to-orange-500/20 rounded-full backdrop-blur-sm border border-white/10 flex items-center justify-center text-red-400 font-bold text-xs transform-gpu perspective-1000 rotateX-25 rotateY-8">
+            Git
+          </div>
+        </div>
+        
+        {/* Ansible */}
+        <div className="floating-element animate-float-3d-7" style={{ top: '35%', right: '30%' }}>
+          <div className="w-11 h-11 bg-gradient-to-br from-red-700/20 to-black/20 rounded-lg backdrop-blur-sm border border-white/10 flex items-center justify-center text-red-300 font-bold text-xs transform-gpu perspective-1000 rotateX-12 rotateY-18">
+            📋
+          </div>
+        </div>
+        
+        {/* Pulumi */}
+        <div className="floating-element animate-float-3d-8" style={{ top: '80%', left: '20%' }}>
+          <div className="w-9 h-9 bg-gradient-to-br from-purple-600/20 to-pink-500/20 rounded-full backdrop-blur-sm border border-white/10 flex items-center justify-center text-purple-300 font-bold text-xs transform-gpu perspective-1000 rotateX-15 rotateY-22">
+            PU
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-coffee-dark mb-6">
             Professional Experience
