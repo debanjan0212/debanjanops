@@ -95,11 +95,16 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-warm-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="py-20 bg-warm-white relative overflow-hidden">
+      {/* Background Mesh Pattern */}
+      <div className="absolute inset-0 gradient-mesh opacity-30"></div>
+      <div className="absolute top-20 right-20 w-64 h-64 gradient-glow rounded-full blur-3xl opacity-10"></div>
+      <div className="absolute bottom-40 left-20 w-48 h-48 gradient-glow rounded-full blur-3xl opacity-10"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-coffee-dark mb-6">
-            Portfolio & Projects
+            <span className="text-gradient">Portfolio & Projects</span>
           </h2>
           <p className="text-xl text-coffee-light max-w-3xl mx-auto">
             Real-world solutions that demonstrate expertise in DevOps, cloud infrastructure, and automation
@@ -110,20 +115,20 @@ const Portfolio = () => {
           {projects.map((project, index) => (
             <Card 
               key={index}
-              className="gradient-card border-0 shadow-soft hover:shadow-medium transition-smooth hover:-translate-y-1 animate-fade-in"
+              className="glass-effect border border-golden/20 shadow-soft hover:shadow-glow transition-smooth hover:-translate-y-2 animate-fade-in group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-6">
                 <div className="flex items-start justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${project.gradient} flex items-center justify-center text-warm-white`}>
+                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${project.gradient} flex items-center justify-center text-warm-white shadow-glow group-hover:animate-pulse-glow`}>
                     {project.icon}
                   </div>
-                  <span className="bg-beige-light text-coffee-medium px-2 py-1 rounded-full text-xs font-medium">
+                  <span className="glass-effect text-coffee-medium px-3 py-1 rounded-full text-xs font-medium border border-golden/20">
                     {project.category}
                   </span>
                 </div>
                 
-                <h3 className="text-lg font-bold text-coffee-dark mb-3">
+                <h3 className="text-lg font-bold text-coffee-dark mb-3 group-hover:text-gradient transition-all duration-300">
                   {project.title}
                 </h3>
                 
@@ -135,7 +140,7 @@ const Portfolio = () => {
                   {project.technologies.map((tech, techIndex) => (
                     <span 
                       key={techIndex}
-                      className="bg-golden/20 text-coffee-dark px-2 py-1 rounded text-xs font-medium"
+                      className="bg-golden/20 text-coffee-dark px-2 py-1 rounded text-xs font-medium hover:bg-golden/30 transition-smooth cursor-default"
                     >
                       {tech}
                     </span>
@@ -146,41 +151,41 @@ const Portfolio = () => {
                   onClick={scrollToContact}
                   variant="outline"
                   size="sm"
-                  className="w-full border-golden/50 text-coffee-medium hover:bg-golden hover:text-coffee-dark transition-smooth"
+                  className="w-full glass-effect border-golden/50 text-coffee-medium hover:bg-golden hover:text-coffee-dark hover:shadow-glow transition-smooth group"
                 >
                   Learn More
-                  <ExternalLink className="ml-2 w-3 h-3" />
+                  <ExternalLink className="ml-2 w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Project Categories Summary */}
+        {/* Enhanced Project Categories Summary */}
         <div className="grid md:grid-cols-4 gap-6 mb-12">
-          <div className="text-center p-6 bg-gradient-to-br from-golden to-golden-dark rounded-lg text-coffee-dark">
-            <div className="text-3xl font-bold mb-2">9+</div>
+          <div className="text-center p-6 glass-effect border border-golden/20 rounded-xl text-coffee-dark hover:shadow-glow transition-smooth group">
+            <div className="text-3xl font-bold mb-2 text-gradient group-hover:animate-pulse-glow">9+</div>
             <div className="font-medium">Major Projects</div>
           </div>
-          <div className="text-center p-6 bg-gradient-to-br from-coffee-medium to-coffee-light rounded-lg text-warm-white">
-            <div className="text-3xl font-bold mb-2">5</div>
+          <div className="text-center p-6 glass-effect border border-golden/20 rounded-xl text-coffee-dark hover:shadow-glow transition-smooth group">
+            <div className="text-3xl font-bold mb-2 text-gradient group-hover:animate-pulse-glow">5</div>
             <div className="font-medium">Technology Stacks</div>
           </div>
-          <div className="text-center p-6 bg-gradient-to-br from-beige-medium to-golden rounded-lg text-coffee-dark">
-            <div className="text-3xl font-bold mb-2">80%</div>
+          <div className="text-center p-6 glass-effect border border-golden/20 rounded-xl text-coffee-dark hover:shadow-glow transition-smooth group">
+            <div className="text-3xl font-bold mb-2 text-gradient group-hover:animate-pulse-glow">80%</div>
             <div className="font-medium">Process Automation</div>
           </div>
-          <div className="text-center p-6 bg-gradient-to-br from-coffee-light to-beige-medium rounded-lg text-coffee-dark">
-            <div className="text-3xl font-bold mb-2">24/7</div>
+          <div className="text-center p-6 glass-effect border border-golden/20 rounded-xl text-coffee-dark hover:shadow-glow transition-smooth group">
+            <div className="text-3xl font-bold mb-2 text-gradient group-hover:animate-pulse-glow">24/7</div>
             <div className="font-medium">System Reliability</div>
           </div>
         </div>
 
-        {/* Call to Action */}
+        {/* Enhanced Call to Action */}
         <div className="text-center">
-          <Card className="gradient-card border-0 shadow-medium inline-block">
+          <Card className="glass-effect border border-golden/30 shadow-glow inline-block hover:shadow-neon transition-smooth">
             <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-coffee-dark mb-4">
+              <h3 className="text-2xl font-bold text-gradient mb-4">
                 Interested in My Work?
               </h3>
               <p className="text-coffee-medium mb-6 max-w-md">
@@ -188,7 +193,7 @@ const Portfolio = () => {
               </p>
               <Button 
                 onClick={scrollToContact}
-                className="bg-golden hover:bg-golden-dark text-coffee-dark px-6 py-2 rounded-lg transition-bounce"
+                className="bg-golden hover:bg-golden-dark text-coffee-dark px-6 py-2 rounded-lg transition-bounce shadow-glow hover:shadow-neon"
               >
                 Get In Touch
               </Button>

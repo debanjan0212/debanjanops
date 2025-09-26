@@ -52,15 +52,23 @@ All colors MUST be HSL.
     --golden: 38 90% 65%;
     --golden-dark: 35 75% 55%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--coffee-dark)), hsl(var(--coffee-medium)));
+    /* Modern AI Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--coffee-dark)), hsl(var(--coffee-medium)), hsl(20 30% 20%));
     --gradient-card: linear-gradient(145deg, hsl(var(--warm-white)), hsl(var(--cream)));
     --gradient-accent: linear-gradient(135deg, hsl(var(--golden)), hsl(var(--golden-dark)));
+    --gradient-mesh: radial-gradient(ellipse at top, hsl(var(--golden) / 0.1), transparent 50%), 
+                     radial-gradient(ellipse at bottom right, hsl(var(--accent) / 0.08), transparent 50%),
+                     radial-gradient(ellipse at bottom left, hsl(var(--primary) / 0.05), transparent 50%);
+    --gradient-glow: radial-gradient(circle at center, hsl(var(--golden) / 0.3), transparent 70%);
+    --gradient-glass: linear-gradient(135deg, hsl(var(--warm-white) / 0.1), hsl(var(--cream) / 0.05));
 
-    /* Shadows */
+    /* Modern Shadows & Glows */
     --shadow-soft: 0 4px 20px -2px hsl(var(--coffee-light) / 0.1);
     --shadow-medium: 0 8px 30px -4px hsl(var(--coffee-medium) / 0.15);
     --shadow-strong: 0 12px 40px -8px hsl(var(--coffee-dark) / 0.2);
+    --shadow-glow: 0 0 40px hsl(var(--golden) / 0.3);
+    --shadow-neon: 0 0 20px hsl(var(--accent) / 0.4), 0 0 40px hsl(var(--accent) / 0.2);
+    --shadow-float: 0 20px 60px -20px hsl(var(--coffee-dark) / 0.3);
 
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -161,6 +169,18 @@ All colors MUST be HSL.
   .gradient-accent {
     background: var(--gradient-accent);
   }
+
+  .gradient-mesh {
+    background: var(--gradient-mesh);
+  }
+
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  .gradient-glass {
+    background: var(--gradient-glass);
+  }
   
   .shadow-soft {
     box-shadow: var(--shadow-soft);
@@ -173,6 +193,18 @@ All colors MUST be HSL.
   .shadow-strong {
     box-shadow: var(--shadow-strong);
   }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-neon {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .shadow-float {
+    box-shadow: var(--shadow-float);
+  }
   
   .transition-smooth {
     transition: var(--transition-smooth);
@@ -180,5 +212,24 @@ All colors MUST be HSL.
   
   .transition-bounce {
     transition: var(--transition-bounce);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--golden)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .floating-element {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
   }
 }

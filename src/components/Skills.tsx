@@ -65,11 +65,15 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-warm-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 bg-warm-white relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-10 right-10 w-32 h-32 gradient-glow rounded-full blur-3xl opacity-10"></div>
+      <div className="absolute bottom-20 left-10 w-40 h-40 gradient-glow rounded-full blur-3xl opacity-10"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-coffee-dark mb-6">
-            Technical Skills
+            <span className="text-gradient">Technical Skills</span>
           </h2>
           <p className="text-xl text-coffee-light max-w-3xl mx-auto">
             Comprehensive expertise across the entire DevOps and cloud infrastructure ecosystem
@@ -80,15 +84,15 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <Card 
               key={index}
-              className="gradient-card border-0 shadow-soft hover:shadow-medium transition-smooth hover:-translate-y-1 animate-fade-in"
+              className="glass-effect border border-golden/20 shadow-soft hover:shadow-glow transition-smooth hover:-translate-y-2 animate-fade-in group"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-6">
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center mb-4 text-warm-white`}>
+                <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${category.color} flex items-center justify-center mb-4 text-warm-white shadow-glow group-hover:animate-pulse-glow`}>
                   {category.icon}
                 </div>
                 
-                <h3 className="text-lg font-bold text-coffee-dark mb-4">
+                <h3 className="text-lg font-bold text-coffee-dark mb-4 group-hover:text-gradient transition-all duration-300">
                   {category.title}
                 </h3>
                 
@@ -96,7 +100,7 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <div 
                       key={skillIndex}
-                      className="bg-beige-light px-3 py-1 rounded-full text-sm text-coffee-medium font-medium"
+                      className="bg-beige-light/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-coffee-medium font-medium hover:bg-golden/20 transition-smooth cursor-default"
                     >
                       {skill}
                     </div>
@@ -107,29 +111,29 @@ const Skills = () => {
           ))}
         </div>
 
-        {/* Key Highlights */}
+        {/* Enhanced Key Highlights */}
         <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="w-16 h-16 bg-golden rounded-full flex items-center justify-center mx-auto mb-4">
-              <Zap className="w-8 h-8 text-coffee-dark" />
+          <div className="text-center group">
+            <div className="w-16 h-16 bg-gradient-to-br from-golden to-golden-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-glow group-hover:shadow-neon transition-all duration-300 group-hover:animate-pulse-glow">
+              <Zap className="w-8 h-8 text-coffee-dark group-hover:animate-glow" />
             </div>
-            <h3 className="text-xl font-bold text-coffee-dark mb-2">Automation Expert</h3>
+            <h3 className="text-xl font-bold text-coffee-dark mb-2 group-hover:text-gradient transition-all duration-300">Automation Expert</h3>
             <p className="text-coffee-medium">Streamlining operations through intelligent automation and scripting</p>
           </div>
           
-          <div className="text-center">
-            <div className="w-16 h-16 bg-golden rounded-full flex items-center justify-center mx-auto mb-4">
-              <Database className="w-8 h-8 text-coffee-dark" />
+          <div className="text-center group">
+            <div className="w-16 h-16 bg-gradient-to-br from-golden to-golden-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-glow group-hover:shadow-neon transition-all duration-300 group-hover:animate-pulse-glow">
+              <Database className="w-8 h-8 text-coffee-dark group-hover:animate-glow" />
             </div>
-            <h3 className="text-xl font-bold text-coffee-dark mb-2">Cloud Architecture</h3>
+            <h3 className="text-xl font-bold text-coffee-dark mb-2 group-hover:text-gradient transition-all duration-300">Cloud Architecture</h3>
             <p className="text-coffee-medium">Designing scalable and resilient cloud infrastructure solutions</p>
           </div>
           
-          <div className="text-center">
-            <div className="w-16 h-16 bg-golden rounded-full flex items-center justify-center mx-auto mb-4">
-              <Monitor className="w-8 h-8 text-coffee-dark" />
+          <div className="text-center group">
+            <div className="w-16 h-16 bg-gradient-to-br from-golden to-golden-dark rounded-full flex items-center justify-center mx-auto mb-4 shadow-glow group-hover:shadow-neon transition-all duration-300 group-hover:animate-pulse-glow">
+              <Monitor className="w-8 h-8 text-coffee-dark group-hover:animate-glow" />
             </div>
-            <h3 className="text-xl font-bold text-coffee-dark mb-2">Site Reliability</h3>
+            <h3 className="text-xl font-bold text-coffee-dark mb-2 group-hover:text-gradient transition-all duration-300">Site Reliability</h3>
             <p className="text-coffee-medium">Ensuring high availability and performance of critical systems</p>
           </div>
         </div>
