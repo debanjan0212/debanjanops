@@ -62,7 +62,7 @@ const Contact = () => {
             {/* Contact Methods */}
             <div className="space-y-6">
               <a 
-                href="mailto:debanjan.das@example.com"
+                href="mailto:itsdebanjandas@gmail.com"
                 className="flex items-center text-golden hover:text-warm-white transition-smooth group"
               >
                 <div className="w-12 h-12 bg-golden/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-golden/30 transition-smooth">
@@ -70,12 +70,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold">Email</div>
-                  <div className="text-beige-light">debanjan.das@example.com</div>
+                  <div className="text-beige-light">itsdebanjandas@gmail.com</div>
                 </div>
               </a>
 
               <a 
-                href="tel:+1234567890"
+                href="tel:+917903963451"
                 className="flex items-center text-golden hover:text-warm-white transition-smooth group"
               >
                 <div className="w-12 h-12 bg-golden/20 rounded-lg flex items-center justify-center mr-4 group-hover:bg-golden/30 transition-smooth">
@@ -83,12 +83,12 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold">Phone</div>
-                  <div className="text-beige-light">+91 12345 67890</div>
+                  <div className="text-beige-light">+91 7903963451</div>
                 </div>
               </a>
 
               <a 
-                href="https://linkedin.com/in/debanjandas"
+                href="https://www.linkedin.com/in/debanjan0212/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-golden hover:text-warm-white transition-smooth group"
@@ -98,7 +98,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold">LinkedIn</div>
-                  <div className="text-beige-light">Connect with me</div>
+                  <div className="text-beige-light">Page makeover in progress</div>
                 </div>
               </a>
 
@@ -118,7 +118,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div className="font-semibold">Location</div>
-                  <div className="text-beige-light">India</div>
+                  <div className="text-beige-light">Bengaluru (North) India</div>
                 </div>
               </div>
             </div>

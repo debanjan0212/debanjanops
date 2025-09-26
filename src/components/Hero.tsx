@@ -1,7 +1,7 @@
 import { ArrowRight, Download, Code, Cloud, Settings, Terminal, Cpu, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-bg.jpg';
-import profilePhoto from '@/assets/profile-photo.jpg';
+import profilePhoto from '@/assets/debanjan-profile.jpg';
 
 const Hero = () => {
   const scrollToPortfolio = () => {
