@@ -15,7 +15,7 @@ const About = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Bio Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-sm font-normal">
             <div className="prose prose-lg">
               <p className="text-coffee-medium leading-relaxed text-lg">Hi, I’m Debanjan Das, a Senior Site Reliability Engineer (SRE) and DevOps Specialist with over 7 years of experience building, automating, and scaling reliable cloud systems.
 
