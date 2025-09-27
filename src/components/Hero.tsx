@@ -1,7 +1,7 @@
 import { ArrowRight, Download, Code, Cloud, Settings, Terminal, Cpu, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-bg.jpg';
-import profilePhoto from '@/assets/debanjan-new-profile.png';
+import profilePhoto from '@/assets/debanjan-profile.jpg';
 
 const Hero = () => {
   const scrollToPortfolio = () => {
@@ -61,7 +61,7 @@ const Hero = () => {
               {/* Profile Photo */}
               <div className="w-40 h-48 md:w-48 md:h-56 rounded-3xl overflow-hidden border-4 border-golden shadow-float animate-float relative z-10">
                 <img 
-                  src={profilePhoto} 
+                  src="https://i.postimg.cc/DfqWFVx3/Gemini-Generated-Image-kjzignkjzignkjzi.png" 
                   alt="Debanjan Das - Senior Site Reliability Engineer"
                   className="w-full h-full object-cover"
                 />
