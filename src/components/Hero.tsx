@@ -109,9 +109,17 @@ const Hero = () => {
             <Button 
               variant="outline"
               className="glass-effect border-2 border-golden text-golden hover:bg-golden hover:text-coffee-dark px-8 py-3 text-lg font-semibold rounded-lg transition-bounce hover:shadow-glow"
+              asChild
             >
-              <Download className="mr-2 w-5 h-5" />
-              Download Resume
+              <a 
+                href="/resume.pdf" 
+                download="Debanjan_Das_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Download className="mr-2 w-5 h-5" />
+                Download Resume
+              </a>
             </Button>
           </div>
 
