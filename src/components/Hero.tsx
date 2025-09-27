@@ -106,21 +106,17 @@ const Hero = () => {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             
-            <Button 
-              variant="outline"
-              className="glass-effect border-2 border-golden text-golden hover:bg-golden hover:text-coffee-dark px-8 py-3 text-lg font-semibold rounded-lg transition-bounce hover:shadow-glow"
-              asChild
-            >
-              <a 
-                href="/resume.pdf" 
-                download="Debanjan_Das_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download className="mr-2 w-5 h-5" />
-                Download Resume
-              </a>
-            </Button>
+            <div className="glass-effect border-2 border-golden/50 text-golden/70 px-8 py-3 text-lg font-semibold rounded-lg cursor-not-allowed">
+              <div className="flex flex-col items-center gap-1">
+                <div className="flex items-center gap-2">
+                  <Download className="w-5 h-5" />
+                  📄 Resume Download - Coming Soon
+                </div>
+                <p className="text-sm text-cream/60 font-normal">
+                  Complete resume with detailed project information will be available for download shortly.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Modern Stats Cards */}
