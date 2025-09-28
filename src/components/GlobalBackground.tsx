@@ -34,9 +34,7 @@ export default function GlobalBackground() {
   const handleError = () => { setIsLoading(false); setHasError(true) }
 
   return (
-    <div ref={canvasRef} className="fixed inset-0 w-full h-full z-0 pointer-events-none" style={{
-      background: 'linear-gradient(135deg, rgba(139,69,19,0.03) 0%, rgba(160,82,45,0.05) 35%, rgba(210,180,140,0.02) 100%)'
-    }}>
+    <div ref={canvasRef} className="fixed inset-0 w-full h-full z-0 pointer-events-none">
       <div className="absolute inset-0 w-full h-full">
         {isLoading && (
           <motion.div className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-950/20 via-background to-orange-900/10 flex items-center justify-center z-10"
@@ -50,7 +48,7 @@ export default function GlobalBackground() {
           </motion.div>
         )}
 
-        <div className="w-full h-full" style={{ opacity: 0.2, mixBlendMode: 'multiply', filter: 'contrast(0.8) brightness(0.6) saturate(0.7)', backgroundColor: 'transparent' }}>
+        <div className="w-full h-full" style={{ opacity: 0.3, backgroundColor: 'transparent' }}>
           <iframe
             src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
             frameBorder='0'
@@ -64,21 +62,17 @@ export default function GlobalBackground() {
         </div>
 
         {hasError && (
-          <motion.div className="absolute inset-0 w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} style={{
-            background: 'linear-gradient(45deg, rgba(139,69,19,0.1) 0%, rgba(160,82,45,0.15) 50%, rgba(210,180,140,0.1) 100%)'
-          }}>
+          <motion.div className="absolute inset-0 w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-amber-2 00/60 text-lg">Immersive Mode Unavailable</div>
+              <div className="text-white/60 text-lg">3D Animation Unavailable</div>
             </div>
           </motion.div>
         )}
       </div>
 
-      <div style={{ opacity: 0.1, position: 'relative', zIndex: 1 }}>
+      <div style={{ opacity: 0.05, position: 'relative', zIndex: 1 }}>
         <ProgrammableDevOpsLayer mouseX={smoothMouseX} mouseY={smoothMouseY} />
       </div>
-
-      <div className="absolute inset-0" style={{ pointerEvents: 'none', background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)' }} />
     </div>
   )
 }
