@@ -18,21 +18,42 @@ const Services = () => {
   const services = [
     {
       icon: Cloud,
-      title: "Cloud Infrastructure",
-      description: "Design and implement scalable cloud infrastructure on AWS, Azure, and GCP with best practices for security and cost optimization.",
-      features: ["Multi-cloud architecture", "Cost optimization", "Scalability planning", "Security implementation"]
+      title: "Cloud Infrastructure Design & Management",
+      description: "Comprehensive cloud architecture design and implementation across AWS, Azure, and GCP. From initial planning to production deployment, ensuring scalability, security, and cost-effectiveness.",
+      features: [
+        "Multi-cloud architecture design and strategy",
+        "Cloud migration planning and execution", 
+        "Infrastructure as Code (Terraform, CloudFormation)",
+        "Cloud cost optimization and rightsizing",
+        "Disaster recovery and backup strategies",
+        "Security compliance and governance"
+      ]
     },
     {
       icon: Settings,
-      title: "DevOps Automation",
-      description: "Streamline your development workflow with CI/CD pipelines, automated testing, and infrastructure as code.",
-      features: ["CI/CD pipeline setup", "Automation frameworks", "Process optimization", "Tool integration"]
+      title: "DevOps Automation & CI/CD",
+      description: "End-to-end DevOps transformation including automated CI/CD pipelines, infrastructure automation, and deployment strategies that reduce time-to-market while improving reliability.",
+      features: [
+        "CI/CD pipeline design and implementation",
+        "Automated testing and quality assurance",
+        "Container orchestration with Kubernetes",
+        "Configuration management and deployment automation",
+        "Git workflow optimization and branching strategies",
+        "Environment provisioning and management"
+      ]
     },
     {
       icon: Shield,
-      title: "Site Reliability Engineering",
-      description: "Ensure your systems are reliable, available, and performant with comprehensive monitoring and incident response.",
-      features: ["System monitoring", "Incident response", "Performance optimization", "Reliability engineering"]
+      title: "Site Reliability Engineering & Monitoring",
+      description: "Comprehensive SRE practices to ensure your systems are reliable, available, and performant. Implementation of observability, monitoring, and incident response procedures.",
+      features: [
+        "System reliability and availability optimization",
+        "Comprehensive monitoring and alerting setup",
+        "Incident response and post-mortem processes",
+        "Performance optimization and capacity planning",
+        "SLA/SLO definition and tracking",
+        "Chaos engineering and resilience testing"
+      ]
     }
   ];
 

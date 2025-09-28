@@ -19,34 +19,76 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: "DevOps & Automation",
-      icon: Settings,
-      skills: ["Jenkins", "ArgoCD", "Ansible", "Terraform", "CI/CD Pipelines"],
-    },
-    {
-      title: "Cloud Platforms",
+      title: "Cloud Platforms & Services",
       icon: Cloud,
-      skills: ["AWS", "EC2", "EKS", "S3", "CloudFront", "IAM"],
+      skills: [
+        "AWS (EC2, EKS, S3, Lambda, CloudFront, Route53)",
+        "Azure (AKS, Blob Storage, Functions)",
+        "GCP (GKE, Cloud Storage, Compute Engine)",
+        "Multi-cloud Architecture Design",
+        "Cloud Cost Optimization",
+        "Cloud Security & Compliance"
+      ],
     },
     {
-      title: "Container Technologies",
+      title: "Container & Orchestration",
       icon: Server,
-      skills: ["Kubernetes", "Docker", "Helm Charts", "Container Management"],
+      skills: [
+        "Kubernetes (Administration & Operations)",
+        "Docker (Container Development & Management)", 
+        "Helm Charts & Package Management",
+        "Container Security & Scanning",
+        "Service Mesh (Istio, Linkerd)",
+        "Container Registry Management"
+      ],
     },
     {
-      title: "Monitoring & Security",
-      icon: Shield,
-      skills: ["ELK Stack", "Prometheus", "Grafana", "Security Compliance"],
+      title: "DevOps & Automation Tools",
+      icon: Settings,
+      skills: [
+        "Jenkins (Pipeline Development & Management)",
+        "GitLab CI/CD & GitHub Actions",
+        "ArgoCD (GitOps Implementation)",
+        "Terraform (Infrastructure as Code)",
+        "Ansible (Configuration Management)",
+        "Puppet & Chef (Legacy System Management)"
+      ],
     },
     {
-      title: "Programming",
+      title: "Monitoring & Observability",
+      icon: Monitor,
+      skills: [
+        "ELK Stack (Elasticsearch, Logstash, Kibana)",
+        "Prometheus & Grafana",
+        "Datadog & New Relic",
+        "Application Performance Monitoring",
+        "Custom Metrics & Alerting",
+        "Distributed Tracing (Jaeger, Zipkin)"
+      ],
+    },
+    {
+      title: "Programming & Scripting",
       icon: Code,
-      skills: ["Python", "Bash", "YAML", "JSON", "Infrastructure as Code"],
+      skills: [
+        "Python (Automation & Tool Development)",
+        "Bash/Shell Scripting",
+        "Go (CLI Tools & Microservices)",
+        "YAML & JSON Configuration",
+        "Git & Version Control Strategies",
+        "API Development & Integration"
+      ],
     },
     {
-      title: "Databases & Storage",
-      icon: Database,
-      skills: ["PostgreSQL", "MongoDB", "Redis", "Database Management"],
+      title: "Security & Compliance",
+      icon: Shield,
+      skills: [
+        "Security Scanning & Vulnerability Assessment",
+        "RBAC & Identity Management",
+        "SOX, PCI DSS & GDPR Compliance",
+        "Secrets Management (Vault, K8s Secrets)",
+        "Network Security & Firewalls",
+        "Security Incident Response"
+      ],
     }
   ];
 
@@ -105,32 +147,39 @@ const Skills = () => {
           })}
         </div>
 
-        {/* Key Highlights */}
+        {/* Key Metrics & Certifications */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid md:grid-cols-3 gap-6"
+          className="grid md:grid-cols-4 gap-6"
         >
           <Card className="p-6 text-center hover-elevate transition-all duration-300">
-            <Monitor className="h-8 w-8 text-primary mx-auto mb-3" />
-            <h3 className="text-lg font-semibold mb-2">Infrastructure Monitoring</h3>
-            <p className="text-muted-foreground text-sm professional-text">
-              Comprehensive monitoring solutions with real-time alerting and dashboards
+            <div className="text-3xl font-bold text-primary mb-2">99.9%</div>
+            <h3 className="text-sm font-semibold mb-1">System Uptime</h3>
+            <p className="text-muted-foreground text-xs professional-text">
+              Achieved across production environments
             </p>
           </Card>
           <Card className="p-6 text-center hover-elevate transition-all duration-300">
-            <GitBranch className="h-8 w-8 text-primary mx-auto mb-3" />
-            <h3 className="text-lg font-semibold mb-2">Process Automation</h3>
-            <p className="text-muted-foreground text-sm professional-text">
-              Automated workflows reducing manual intervention by 80%
+            <div className="text-3xl font-bold text-primary mb-2">500+</div>
+            <h3 className="text-sm font-semibold mb-1">Deployments/Month</h3>
+            <p className="text-muted-foreground text-xs professional-text">
+              Automated CI/CD pipeline deployments
             </p>
           </Card>
           <Card className="p-6 text-center hover-elevate transition-all duration-300">
-            <Shield className="h-8 w-8 text-primary mx-auto mb-3" />
-            <h3 className="text-lg font-semibold mb-2">Security First</h3>
-            <p className="text-muted-foreground text-sm professional-text">
-              Security-focused infrastructure with compliance and best practices
+            <div className="text-3xl font-bold text-primary mb-2">60%</div>
+            <h3 className="text-sm font-semibold mb-1">MTTR Reduction</h3>
+            <p className="text-muted-foreground text-xs professional-text">
+              Through enhanced monitoring & automation
+            </p>
+          </Card>
+          <Card className="p-6 text-center hover-elevate transition-all duration-300">
+            <div className="text-3xl font-bold text-primary mb-2">35%</div>
+            <h3 className="text-sm font-semibold mb-1">Cost Savings</h3>
+            <p className="text-muted-foreground text-xs professional-text">
+              Cloud infrastructure optimization
             </p>
           </Card>
         </motion.div>
