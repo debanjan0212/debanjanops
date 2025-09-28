@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -30,10 +30,20 @@ const technologies = [
 export default function About() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"])
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4])
 
   return (
-    <section id="about" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm overflow-hidden">
+      <motion.div 
+        style={{ y, opacity }} 
+        className="max-w-6xl mx-auto"
+      >
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -55,7 +65,8 @@ export default function About() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
+            whileHover={{ scale: 1.02 }}
+            className="space-y-6 transform-gpu"
           >
             <div className="space-y-6">
               <div className="relative">
@@ -142,15 +153,25 @@ export default function About() {
               return (
                 <motion.div
                   key={highlight.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.2 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.2, type: "spring", stiffness: 200 }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    rotateY: 5,
+                    transition: { duration: 0.2 } 
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <Card className="p-6 hover-elevate transition-all duration-300">
+                  <Card className="p-6 hover-elevate transition-all duration-300 transform-gpu perspective-1000">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <motion.div 
+                        className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
                         <Icon className="h-6 w-6 text-primary" />
-                      </div>
+                      </motion.div>
                       <div>
                         <h3 className="text-xl font-semibold">{highlight.title}</h3>
                         <p className="text-muted-foreground">{highlight.description}</p>
@@ -185,7 +206,7 @@ export default function About() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -1,4 +1,4 @@
-import { motion, useInView, AnimatePresence } from "framer-motion"
+import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -19,12 +19,18 @@ const Skills = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
   const [selectedSkill, setSelectedSkill] = useState<any>(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"])
 
   const skillCategories = [
     {
       title: "Cloud Platforms",
       icon: Cloud,
-      color: "hsl(25, 60%, 45%)", // Using primary color from design system
+      color: "hsl(25, 60%, 45%)",
       skills: [
         { name: "AWS", fullName: "Amazon Web Services", efficiency: 95 },
         { name: "Azure", fullName: "Microsoft Azure", efficiency: 90 },
@@ -37,7 +43,7 @@ const Skills = () => {
     {
       title: "Container & Orchestration", 
       icon: Server,
-      color: "hsl(30, 50%, 40%)", // Using chart-2 color
+      color: "hsl(30, 50%, 40%)",
       skills: [
         { name: "Kubernetes", fullName: "Kubernetes Administration", efficiency: 94 },
         { name: "Docker", fullName: "Docker Container Management", efficiency: 96 },
@@ -50,7 +56,7 @@ const Skills = () => {
     {
       title: "DevOps Automation",
       icon: Settings,
-      color: "hsl(35, 45%, 35%)", // Using chart-3 color
+      color: "hsl(35, 45%, 35%)",
       skills: [
         { name: "Jenkins", fullName: "Jenkins Pipeline Development", efficiency: 92 },
         { name: "GitLab CI/CD", fullName: "GitLab CI/CD & GitHub Actions", efficiency: 90 },
@@ -63,7 +69,7 @@ const Skills = () => {
     {
       title: "Monitoring & Observability",
       icon: Monitor,
-      color: "hsl(20, 55%, 50%)", // Using chart-4 color
+      color: "hsl(20, 55%, 50%)",
       skills: [
         { name: "ELK Stack", fullName: "ELK Stack Implementation", efficiency: 90 },
         { name: "Prometheus", fullName: "Prometheus & Grafana", efficiency: 92 },
@@ -76,7 +82,7 @@ const Skills = () => {
     {
       title: "Programming & Scripting",
       icon: Code,
-      color: "hsl(15, 65%, 55%)", // Using chart-5 color
+      color: "hsl(15, 65%, 55%)",
       skills: [
         { name: "Python", fullName: "Python Development", efficiency: 90 },
         { name: "Bash", fullName: "Bash/Shell Scripting", efficiency: 95 },
@@ -89,7 +95,7 @@ const Skills = () => {
     {
       title: "Security & Compliance",
       icon: Shield,
-      color: "hsl(25, 45%, 30%)", // Darker brown for security
+      color: "hsl(25, 45%, 30%)",
       skills: [
         { name: "Vulnerability", fullName: "Vulnerability Assessment", efficiency: 88 },
         { name: "RBAC", fullName: "RBAC & Identity Management", efficiency: 90 },
@@ -103,7 +109,10 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+      <motion.div 
+        style={{ y }} 
+        className="max-w-7xl mx-auto"
+      >
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -127,37 +136,57 @@ const Skills = () => {
             return (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-                transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                initial={{ opacity: 0, scale: 0, rotateY: -180 }}
+                animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : { opacity: 0, scale: 0, rotateY: -180 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: categoryIndex * 0.15,
+                  type: "spring",
+                  stiffness: 120
+                }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotateY: 10,
+                  transition: { duration: 0.3 }
+                }}
+                style={{ transformStyle: "preserve-3d" }}
                 className="flex flex-col items-center"
               >
                 {/* Large Circular Container */}
                 <div className="relative w-72 h-72 mb-6">
                   {/* Outer Circle */}
-                  <div 
+                  <motion.div 
                     className="absolute inset-0 rounded-full border-4 border-opacity-30 flex items-center justify-center shadow-2xl"
                     style={{ 
                       backgroundColor: `${category.color}20`,
                       borderColor: category.color 
                     }}
+                    whileHover={{ 
+                      boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
+                      scale: 1.02,
+                      transition: { duration: 0.3 }
+                    }}
                   >
                     {/* Center Icon */}
-                    <div 
+                    <motion.div 
                       className="w-16 h-16 rounded-full flex items-center justify-center z-20 shadow-lg"
                       style={{ backgroundColor: category.color }}
+                      whileHover={{ 
+                        scale: 1.1, 
+                        rotate: 180,
+                        transition: { duration: 0.4 }
+                      }}
                     >
                       <Icon className="w-8 h-8 text-white" />
-                    </div>
+                    </motion.div>
 
                     {/* Rotating Skills Around the Circle */}
                     {category.skills.map((skill, skillIndex) => {
                       const angle = (skillIndex * 360) / category.skills.length;
-                      const radius = 100; // Reduced for smaller circles
+                      const radius = 100;
                       const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
                       const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
                       
-                      // Random rotation direction and speed
                       const rotationDirection = skillIndex % 2 === 0 ? 1 : -1;
                       const rotationSpeed = 10 + (skillIndex * 2);
 
@@ -183,13 +212,21 @@ const Skills = () => {
                             category: category.title,
                             categoryColor: category.color
                           })}
-                          whileHover={{ scale: 1.2 }}
-                          whileTap={{ scale: 0.9 }}
+                          whileHover={{ 
+                            scale: 1.3, 
+                            rotateY: 180,
+                            boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
+                            transition: { duration: 0.2 }
+                          }}
+                          whileTap={{ 
+                            scale: 0.9,
+                            transition: { duration: 0.1 }
+                          }}
                         >
                           <div 
-                            className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 backdrop-blur-sm transition-all duration-300 group-hover:shadow-xl group-hover:scale-110"
+                            className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 backdrop-blur-sm transition-all duration-300 group-hover:shadow-xl"
                             style={{ 
-                              backgroundColor: `${category.color}CC`, // More subtle opacity
+                              backgroundColor: `${category.color}CC`,
                               backdropFilter: 'blur(10px)'
                             }}
                           >
@@ -217,7 +254,7 @@ const Skills = () => {
                         </motion.div>
                       );
                     })}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Category Title */}
@@ -265,7 +302,7 @@ const Skills = () => {
             </p>
           </Card>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Individual Skill Detail Modal */}
       <AnimatePresence>
