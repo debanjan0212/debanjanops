@@ -15,7 +15,7 @@ const Index = () => {
       <GlobalBackground />
       <Navigation />
       <Hero />
-      <div className="space-y-6">
+      <div className="space-y-4">
         <About />
         <Experience />
         <Skills />

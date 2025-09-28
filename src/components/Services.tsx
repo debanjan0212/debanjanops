@@ -85,7 +85,7 @@ const Services = () => {
   }
 
   return (
-    <section id="services" className="py-12 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
+    <section id="services" className="py-8 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -160,46 +160,46 @@ const Services = () => {
                     height: '350px',
                   }}
                 >
-                  <Card className={`p-4 md:p-6 w-full h-full transition-all duration-500 ${
+                  <Card className={`p-4 md:p-6 w-full h-full transition-all duration-500 overflow-hidden ${
                     isActive 
                       ? 'shadow-xl border-primary/30 bg-card/95 backdrop-blur-sm' 
                       : 'shadow-md border-border/30 bg-card/80'
                   }`}>
                     <div className="flex flex-col h-full">
-                      <div className="flex items-center mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
-                          <Icon className="h-6 w-6 text-primary" />
+                      <div className="flex items-center mb-3">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-3 flex-shrink-0">
+                          <Icon className="h-5 w-5 text-primary" />
                         </div>
-                        <h3 className="text-lg font-bold professional-heading">{service.title}</h3>
+                        <h3 className="text-base font-bold professional-heading leading-tight">{service.title}</h3>
                       </div>
                       
-                      <p className="text-muted-foreground mb-6 professional-text leading-relaxed text-sm">
+                      <p className="text-muted-foreground mb-4 professional-text leading-relaxed text-xs flex-shrink-0">
                         {service.description}
                       </p>
                       
-                      <div className="flex-1">
-                        <div className="space-y-2">
+                      <div className="flex-1 overflow-hidden">
+                        <div className="space-y-1.5 overflow-hidden">
                           {service.features.slice(0, 4).map((feature, featureIndex) => (
                             <motion.div
                               key={feature}
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: isActive ? 1 : 0.7, x: 0 }}
                               transition={{ delay: isActive ? featureIndex * 0.1 : 0, duration: 0.5 }}
-                              className="flex items-center text-xs text-muted-foreground"
+                              className="flex items-start text-xs text-muted-foreground leading-tight"
                             >
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary mr-2 flex-shrink-0"></div>
-                              {feature}
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary mr-2 flex-shrink-0 mt-1.5"></div>
+                              <span className="line-clamp-2">{feature}</span>
                             </motion.div>
                           ))}
                         </div>
                       </div>
                       
-                      <div className="mt-6 pt-4 border-t border-border/50">
+                      <div className="mt-4 pt-3 border-t border-border/50 flex-shrink-0">
                         <Button 
                           variant="outline" 
                           size="sm" 
                           onClick={scrollToContact} 
-                          className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary"
+                          className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary text-xs"
                         >
                           Learn More
                         </Button>
