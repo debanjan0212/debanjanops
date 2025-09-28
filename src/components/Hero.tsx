@@ -329,7 +329,7 @@ function ProgrammableDevOpsLayer({ mouseX, mouseY }: { mouseX: any; mouseY: any 
   )
 }
 
-const Hero = () => {
+const Hero = ({ showBackground = false }: { showBackground?: boolean }) => {
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
   }
@@ -340,8 +340,8 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-black">
-      {/* Enhanced 3D Background Layer */}
-      <Enhanced3DBackgroundLayer />
+      {/* Enhanced 3D Background Layer (disabled globally unless explicitly enabled) */}
+      {showBackground && <Enhanced3DBackgroundLayer />}
       
       {/* Content Layer - Split Layout Design */}
       <div className="relative z-20 min-h-screen flex items-center">

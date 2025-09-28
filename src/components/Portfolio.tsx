@@ -70,7 +70,7 @@ const Portfolio = () => {
   }
 
   return (
-    <section id="portfolio" className="py-20 px-4 relative z-10 bg-gray-50">
+    <section id="portfolio" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
