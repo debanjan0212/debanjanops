@@ -87,7 +87,7 @@ export default function GlobalBackground() {
       </div>
 
       {/* Technical Skills Section - Custom Skills Video */}
-      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '200vh', opacity: 0.25 }}>
+      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '200vh', opacity: 0.5 }}>
         <video
           autoPlay
           muted
@@ -102,7 +102,7 @@ export default function GlobalBackground() {
       </div>
 
       {/* My Services Section - Custom Services Video */}
-      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '300vh', opacity: 0.25 }}>
+      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '300vh', opacity: 0.5 }}>
         <video
           autoPlay
           muted
@@ -114,21 +114,6 @@ export default function GlobalBackground() {
           <source src="/videos/services-bg.webm" type="video/webm" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-br from-amber-700/20 via-transparent to-orange-600/25"></div>
-      </div>
-
-      {/* Portfolio Section - Server/DataCenter Video */}
-      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '400vh', opacity: 0.25 }}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          style={{ filter: 'hue-rotate(75deg) saturate(0.5)' }}
-        >
-          <source src="/videos/server-datacenter.webm" type="video/webm" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 via-transparent to-orange-500/25"></div>
       </div>
 
 
