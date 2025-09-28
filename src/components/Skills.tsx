@@ -128,139 +128,67 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        {/* Large Circular Skills Containers */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16 justify-items-center">
+        {/* Skills Categories */}
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-16">
           {skillCategories.map((category, categoryIndex) => {
             const Icon = category.icon;
             
             return (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, scale: 0, rotateY: -180 }}
-                animate={isInView ? { opacity: 1, scale: 1, rotateY: 0 } : { opacity: 0, scale: 0, rotateY: -180 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ 
-                  duration: 0.8, 
-                  delay: categoryIndex * 0.15,
-                  type: "spring",
-                  stiffness: 120
+                  duration: 0.6, 
+                  delay: categoryIndex * 0.1
                 }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  rotateY: 10,
-                  transition: { duration: 0.3 }
-                }}
-                style={{ transformStyle: "preserve-3d" }}
-                className="flex flex-col items-center"
+                className="flex flex-col"
               >
-                {/* Large Circular Container */}
-                <div className="relative w-72 h-72 mb-6">
-                  {/* Outer Circle */}
-                  <motion.div 
-                    className="absolute inset-0 rounded-full border-4 border-opacity-30 flex items-center justify-center shadow-2xl"
-                    style={{ 
-                      backgroundColor: `${category.color}20`,
-                      borderColor: category.color 
-                    }}
-                    whileHover={{ 
-                      boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-                      scale: 1.02,
-                      transition: { duration: 0.3 }
-                    }}
-                  >
-                    {/* Center Icon */}
-                    <motion.div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center z-20 shadow-lg"
-                      style={{ backgroundColor: category.color }}
-                      whileHover={{ 
-                        scale: 1.1, 
-                        rotate: 180,
-                        transition: { duration: 0.4 }
-                      }}
+                {/* Category Header */}
+                <Card className="p-6 mb-4 bg-card/50 backdrop-blur-sm border-border/50">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div 
+                      className="w-12 h-12 rounded-lg flex items-center justify-center"
+                      style={{ backgroundColor: `${category.color}20` }}
                     >
-                      <Icon className="w-8 h-8 text-white" />
-                    </motion.div>
-
-                    {/* Rotating Skills Around the Circle */}
-                    {category.skills.map((skill, skillIndex) => {
-                      const angle = (skillIndex * 360) / category.skills.length;
-                      const radius = 100;
-                      const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
-                      const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
-                      
-                      const rotationDirection = skillIndex % 2 === 0 ? 1 : -1;
-                      const rotationSpeed = 10 + (skillIndex * 2);
-
-                      return (
-                        <motion.div
-                          key={skill.name}
-                          className="absolute cursor-pointer group"
-                          style={{
-                            left: `calc(50% + ${x}px)`,
-                            top: `calc(50% + ${y}px)`,
-                            transform: 'translate(-50%, -50%)'
-                          }}
-                          animate={{
-                            rotate: rotationDirection * 360
-                          }}
-                          transition={{
-                            duration: rotationSpeed,
-                            repeat: Infinity,
-                            ease: "linear"
-                          }}
-                          onClick={() => setSelectedSkill({
-                            ...skill,
-                            category: category.title,
-                            categoryColor: category.color
-                          })}
-                          whileHover={{ 
-                            scale: 1.3, 
-                            rotateY: 180,
-                            boxShadow: "0 10px 20px rgba(0,0,0,0.3)",
-                            transition: { duration: 0.2 }
-                          }}
-                          whileTap={{ 
-                            scale: 0.9,
-                            transition: { duration: 0.1 }
-                          }}
-                        >
-                          <div 
-                            className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 backdrop-blur-sm transition-all duration-300 group-hover:shadow-xl"
-                            style={{ 
-                              backgroundColor: `${category.color}CC`,
-                              backdropFilter: 'blur(10px)'
-                            }}
-                          >
-                            <motion.div
-                              animate={{
-                                rotate: -rotationDirection * 360
-                              }}
-                              transition={{
-                                duration: rotationSpeed,
-                                repeat: Infinity,
-                                ease: "linear"
-                              }}
-                              className="text-white font-bold text-xs text-center leading-tight"
-                            >
-                              {skill.name}
-                            </motion.div>
-                          </div>
-
-                          {/* Skill efficiency indicator */}
-                          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <div className="bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-                              {skill.efficiency}%
-                            </div>
-                          </div>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </div>
-
-                {/* Category Title */}
-                <h3 className="text-xl font-bold text-center professional-heading">
-                  {category.title}
-                </h3>
+                      <Icon 
+                        className="w-6 h-6" 
+                        style={{ color: category.color }}
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold professional-heading">
+                      {category.title}
+                    </h3>
+                  </div>
+                  
+                  {/* Skills Grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.button
+                        key={skill.name}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                        transition={{ 
+                          duration: 0.3, 
+                          delay: categoryIndex * 0.1 + skillIndex * 0.05 
+                        }}
+                        onClick={() => setSelectedSkill({
+                          ...skill,
+                          category: category.title,
+                          categoryColor: category.color
+                        })}
+                        className="p-3 rounded-lg border border-border/30 bg-background/30 hover:bg-background/50 transition-all duration-200 hover:scale-105 hover:border-primary/30 group"
+                      >
+                        <div className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                          {skill.name}
+                        </div>
+                        <div className="text-xs text-muted-foreground mt-1">
+                          {skill.efficiency}%
+                        </div>
+                      </motion.button>
+                    ))}
+                  </div>
+                </Card>
               </motion.div>
             );
           })}
