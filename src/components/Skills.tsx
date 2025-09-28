@@ -24,7 +24,7 @@ const Skills = () => {
     {
       title: "Cloud Platforms",
       icon: Cloud,
-      color: "hsl(220, 90%, 60%)",
+      color: "hsl(25, 60%, 45%)", // Using primary color from design system
       skills: [
         { name: "AWS", fullName: "Amazon Web Services", efficiency: 95 },
         { name: "Azure", fullName: "Microsoft Azure", efficiency: 90 },
@@ -37,7 +37,7 @@ const Skills = () => {
     {
       title: "Container & Orchestration", 
       icon: Server,
-      color: "hsl(160, 85%, 55%)",
+      color: "hsl(30, 50%, 40%)", // Using chart-2 color
       skills: [
         { name: "Kubernetes", fullName: "Kubernetes Administration", efficiency: 94 },
         { name: "Docker", fullName: "Docker Container Management", efficiency: 96 },
@@ -50,7 +50,7 @@ const Skills = () => {
     {
       title: "DevOps Automation",
       icon: Settings,
-      color: "hsl(280, 80%, 65%)",
+      color: "hsl(35, 45%, 35%)", // Using chart-3 color
       skills: [
         { name: "Jenkins", fullName: "Jenkins Pipeline Development", efficiency: 92 },
         { name: "GitLab CI/CD", fullName: "GitLab CI/CD & GitHub Actions", efficiency: 90 },
@@ -58,6 +58,45 @@ const Skills = () => {
         { name: "Terraform", fullName: "Terraform Infrastructure", efficiency: 94 },
         { name: "Ansible", fullName: "Ansible Configuration", efficiency: 88 },
         { name: "Automation", fullName: "Automation Scripting", efficiency: 95 }
+      ],
+    },
+    {
+      title: "Monitoring & Observability",
+      icon: Monitor,
+      color: "hsl(20, 55%, 50%)", // Using chart-4 color
+      skills: [
+        { name: "ELK Stack", fullName: "ELK Stack Implementation", efficiency: 90 },
+        { name: "Prometheus", fullName: "Prometheus & Grafana", efficiency: 92 },
+        { name: "Datadog", fullName: "Datadog & New Relic", efficiency: 85 },
+        { name: "APM", fullName: "Performance Monitoring", efficiency: 88 },
+        { name: "Alerts", fullName: "Custom Metrics & Alerts", efficiency: 90 },
+        { name: "Tracing", fullName: "Distributed Tracing", efficiency: 82 }
+      ],
+    },
+    {
+      title: "Programming & Scripting",
+      icon: Code,
+      color: "hsl(15, 65%, 55%)", // Using chart-5 color
+      skills: [
+        { name: "Python", fullName: "Python Development", efficiency: 90 },
+        { name: "Bash", fullName: "Bash/Shell Scripting", efficiency: 95 },
+        { name: "Go", fullName: "Go Development", efficiency: 80 },
+        { name: "YAML", fullName: "YAML & JSON", efficiency: 92 },
+        { name: "Git", fullName: "Git Version Control", efficiency: 94 },
+        { name: "APIs", fullName: "API Development", efficiency: 85 }
+      ],
+    },
+    {
+      title: "Security & Compliance",
+      icon: Shield,
+      color: "hsl(25, 45%, 30%)", // Darker brown for security
+      skills: [
+        { name: "Vulnerability", fullName: "Vulnerability Assessment", efficiency: 88 },
+        { name: "RBAC", fullName: "RBAC & Identity Management", efficiency: 90 },
+        { name: "Compliance", fullName: "Compliance (SOX, PCI DSS)", efficiency: 85 },
+        { name: "Secrets", fullName: "Secrets Management", efficiency: 92 },
+        { name: "Network", fullName: "Network Security", efficiency: 86 },
+        { name: "Incident", fullName: "Incident Response", efficiency: 84 }
       ],
     }
   ];
@@ -81,7 +120,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Large Circular Skills Containers */}
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8 mb-16 justify-items-center">
           {skillCategories.map((category, categoryIndex) => {
             const Icon = category.icon;
             
@@ -94,7 +133,7 @@ const Skills = () => {
                 className="flex flex-col items-center"
               >
                 {/* Large Circular Container */}
-                <div className="relative w-80 h-80 mb-6">
+                <div className="relative w-72 h-72 mb-6">
                   {/* Outer Circle */}
                   <div 
                     className="absolute inset-0 rounded-full border-4 border-opacity-30 flex items-center justify-center shadow-2xl"
@@ -105,16 +144,16 @@ const Skills = () => {
                   >
                     {/* Center Icon */}
                     <div 
-                      className="w-20 h-20 rounded-full flex items-center justify-center z-20"
+                      className="w-16 h-16 rounded-full flex items-center justify-center z-20 shadow-lg"
                       style={{ backgroundColor: category.color }}
                     >
-                      <Icon className="w-10 h-10 text-white" />
+                      <Icon className="w-8 h-8 text-white" />
                     </div>
 
                     {/* Rotating Skills Around the Circle */}
                     {category.skills.map((skill, skillIndex) => {
                       const angle = (skillIndex * 360) / category.skills.length;
-                      const radius = 120;
+                      const radius = 100; // Reduced for smaller circles
                       const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
                       const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
                       
@@ -148,9 +187,9 @@ const Skills = () => {
                           whileTap={{ scale: 0.9 }}
                         >
                           <div 
-                            className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20 backdrop-blur-sm transition-all duration-300 group-hover:shadow-xl"
+                            className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 backdrop-blur-sm transition-all duration-300 group-hover:shadow-xl group-hover:scale-110"
                             style={{ 
-                              backgroundColor: `${category.color}90`,
+                              backgroundColor: `${category.color}CC`, // More subtle opacity
                               backdropFilter: 'blur(10px)'
                             }}
                           >
