@@ -6,11 +6,6 @@ import { Calendar, MapPin, Briefcase, GraduationCap } from "lucide-react"
 
 const highlights = [
   {
-    icon: GraduationCap,
-    title: "B.Tech EEE",
-    description: "VIT Vellore • CGPA: 8.48 (84.8%)"
-  },
-  {
     icon: Briefcase,
     title: "7+ Years",
     description: "Professional Experience"
@@ -153,6 +148,48 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
           >
+            {/* Education Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
+              transition={{ duration: 0.6, delay: 0.6, type: "spring", stiffness: 200 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotateY: 5,
+                transition: { duration: 0.2 } 
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Card className="p-6 hover-elevate transition-all duration-300 transform-gpu perspective-1000 bg-gradient-to-br from-primary/5 to-secondary/5">
+                <div className="flex items-start gap-4">
+                  <motion.div 
+                    className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0"
+                    whileHover={{ rotate: 360, scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <GraduationCap className="h-6 w-6 text-primary" />
+                  </motion.div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold mb-2 professional-heading">Education</h3>
+                    <div className="space-y-2">
+                      <h4 className="text-lg font-medium text-foreground">B.Tech in Electrical and Electronics Engineering</h4>
+                      <p className="text-muted-foreground flex items-center gap-1">
+                        <MapPin className="h-4 w-4" />
+                        Vellore Institute of Technology
+                      </p>
+                      <p className="text-muted-foreground flex items-center gap-1">
+                        <Calendar className="h-4 w-4" />
+                        2014 - 2018
+                      </p>
+                      <Badge className="bg-primary/10 text-primary border-primary/20 mt-2">
+                        CGPA: 8.48 (84.6%)
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+
             {highlights.map((highlight, index) => {
               const Icon = highlight.icon
               return (
@@ -160,9 +197,9 @@ export default function About() {
                   key={highlight.title}
                   initial={{ opacity: 0, y: 20, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.2, type: "spring", stiffness: 200 }}
+                  transition={{ duration: 0.6, delay: 0.8 + index * 0.2, type: "spring", stiffness: 200 }}
                   whileHover={{ 
-                    scale: 1.05, 
+                    scale: 1.05,
                     rotateY: 5,
                     transition: { duration: 0.2 } 
                   }}
@@ -191,7 +228,7 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
             >
               <Card className="p-6 bg-gradient-to-r from-primary/5 to-purple-500/5 border-primary/20">
                 <div className="text-center">
