@@ -511,7 +511,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative flex justify-center lg:justify-end items-center"
             >
-              {/* Container with warm gradient background */}
+              {/* Container with bottom gradient */}
               <motion.div
                 className="relative"
                 animate={{
@@ -524,38 +524,25 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               >
-                {/* Beautiful warm gradient background */}
-                <div 
-                  className="absolute inset-0 rounded-3xl"
-                  style={{
-                    background: 'linear-gradient(135deg, #FDF6E3 0%, #F5E6D3 25%, #E8D5B7 50%, #D4AC7A 75%, #CD853F 100%)',
-                    transform: 'scale(1.1)',
-                    filter: 'blur(20px)',
-                    opacity: 0.7,
-                    zIndex: -1
-                  }}
-                />
-                
-                {/* Secondary gradient layer for depth */}
-                <div 
-                  className="absolute inset-0 rounded-3xl"
-                  style={{
-                    background: 'radial-gradient(ellipse at 30% 30%, rgba(255, 248, 220, 0.8) 0%, rgba(250, 235, 215, 0.4) 40%, transparent 70%)',
-                    transform: 'scale(1.05)',
-                    zIndex: -1
-                  }}
-                />
-
-                {/* Professional portrait with enhanced styling */}
+                {/* Professional portrait */}
                 <motion.img
                   src="https://i.postimg.cc/zGS3tZ3N/IMG-4625-removebg-preview.png"
                   alt="Debanjan Das - Professional Portrait"
                   className="w-48 h-60 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-2xl"
                   style={{
-                    filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) drop-shadow(0 15px 30px rgba(139, 69, 19, 0.2))',
+                    filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3))',
                     background: 'transparent'
                   }}
                   data-testid="img-professional-portrait"
+                />
+                
+                {/* Bottom gradient overlay */}
+                <div 
+                  className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 md:h-40 lg:h-48 rounded-b-2xl pointer-events-none z-20"
+                  style={{
+                    background: 'linear-gradient(to top, #FDF6E3 0%, #F5E6D3 30%, #E8D5B7 60%, rgba(232, 213, 183, 0.7) 80%, transparent 100%)',
+                    mixBlendMode: 'multiply'
+                  }}
                 />
               </motion.div>
             </motion.div>
