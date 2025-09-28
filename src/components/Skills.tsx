@@ -109,15 +109,15 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 relative z-10 overflow-hidden">
+    <section id="skills" className="py-20 px-4 relative z-10 overflow-hidden gpu-accelerated">
       {/* Parallax Background */}
       <motion.div
         style={{ y: backgroundY }}
-        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 -z-10"
+        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 -z-10 gpu-accelerated"
       />
       <motion.div 
         style={{ y }} 
-        className="max-w-7xl mx-auto relative z-10"
+        className="max-w-7xl mx-auto relative z-10 gpu-accelerated"
       >
         <motion.div
           ref={ref}
