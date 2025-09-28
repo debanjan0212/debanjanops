@@ -32,7 +32,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-50px" })
 
   return (
-    <section id="about" className="py-20 px-4 relative z-10 bg-white" style={{ backgroundColor: '#ffffff', background: '#ffffff', colorScheme: 'light' }}>
+    <section id="about" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
