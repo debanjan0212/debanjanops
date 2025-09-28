@@ -35,11 +35,11 @@ export default function About() {
     offset: ["start end", "end start"]
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"])
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8])
 
   return (
-    <section id="about" className="py-12 px-4 relative z-10 bg-background/80 backdrop-blur-sm overflow-hidden">
+    <section id="about" className="py-12 px-4 relative z-10 bg-background/40 backdrop-blur-sm overflow-hidden">
       <motion.div 
         style={{ y, opacity }} 
         className="max-w-6xl mx-auto"

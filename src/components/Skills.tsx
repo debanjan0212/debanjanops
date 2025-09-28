@@ -126,7 +126,7 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="py-4 px-4 relative z-10 overflow-hidden gpu-accelerated">
+    <section id="skills" className="py-4 px-4 relative z-10 overflow-hidden gpu-accelerated bg-background/40 backdrop-blur-sm">
       {/* Parallax Background */}
       <motion.div
         style={{ y: backgroundY }}
