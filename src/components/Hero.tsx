@@ -490,7 +490,7 @@ const Hero = () => {
             >
               {/* Clean portrait with natural pop-out and floating animation */}
               <motion.img
-                src="https://i.postimg.cc/dVmNWcD6/IMG-4625.jpg"
+                src="https://i.postimg.cc/zGS3tZ3N/IMG-4625-removebg-preview.png"
                 alt="Debanjan Das - Professional Portrait"
                 className="w-80 h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-lg"
                 style={{
