@@ -365,7 +365,7 @@ const Hero = () => {
       {/* Content Layer - Split Layout Design */}
       <div className="relative z-20 min-h-screen flex items-center">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen py-20">
+          <div className="grid grid-cols-2 gap-6 lg:gap-20 items-center min-h-screen py-20">
 
             {/* Left Side - Content */}
             <motion.div
@@ -381,15 +381,15 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                <h1 className="text-4xl lg:text-6xl font-bold mb-4 leading-tight">
+                <h1 className="text-2xl sm:text-4xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
                   <span className="text-white">Debanjan Das</span>
                 </h1>
 
-                <h2 className="text-xl lg:text-2xl font-medium mb-2 text-gray-300">
+                <h2 className="text-sm sm:text-xl lg:text-2xl font-medium mb-1 sm:mb-2 text-gray-300">
                   DevOps Engineer
                 </h2>
 
-                <h3 className="text-2xl lg:text-3xl font-semibold mb-6 leading-tight">
+                <h3 className="text-lg sm:text-2xl lg:text-3xl font-semibold mb-3 sm:mb-6 leading-tight">
                   <span className="text-white">Transforming Ideas Into </span>
                   <span className="text-red-500">Digital Reality</span>
                 </h3>
@@ -401,13 +401,13 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="mb-8"
               >
-                <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
+                <p className="text-gray-300 text-sm sm:text-lg leading-relaxed max-w-lg">
                   Senior Site Reliability Engineer with 7+ years transforming infrastructure challenges into scalable, automated solutions. Building resilient systems that power innovation at <span className="text-primary font-semibold">Signeasy</span>.
                 </p>
 
-                <div className="flex items-center gap-2 text-gray-400 mt-4">
-                  <MapPin className="h-4 w-4" />
-                  <span>Bengaluru, India</span>
+                <div className="flex items-center gap-1 sm:gap-2 text-gray-400 mt-2 sm:mt-4">
+                  <MapPin className="h-3 w-3 sm:h-4 sm:w-4" />
+                  <span className="text-xs sm:text-base">Bengaluru, India</span>
                 </div>
               </motion.div>
 
@@ -471,8 +471,8 @@ const Hero = () => {
 
                 <Button
                   variant="outline"
-                  size="lg"
-                  className="px-8 py-3 text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300"
+                  size="sm"
+                  className="px-4 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300"
                   onClick={scrollToAbout}
                   data-testid="button-about"
                 >
