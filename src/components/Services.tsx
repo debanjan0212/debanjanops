@@ -92,7 +92,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-6"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-3 professional-heading">
             My <span className="text-primary">Services</span>
