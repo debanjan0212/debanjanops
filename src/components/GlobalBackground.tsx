@@ -71,49 +71,61 @@ export default function GlobalBackground() {
         )}
       </div>
 
-      {/* Extended 3D Layers - Replicated for continuous effect */}
-      <div className="absolute top-full w-full h-screen" style={{ opacity: 0.6 }}>
-        <iframe
-          src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
-          frameBorder='0'
-          width='100%'
-          height='100%'
-          style={{ border: 'none', transform: 'rotateY(180deg)' }}
-          title="Extended 3D Animation 1"
-        />
+      {/* DevOps Coding Video - About/Experience Sections */}
+      <div className="absolute top-full w-full h-screen overflow-hidden" style={{ opacity: 0.4 }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ filter: 'hue-rotate(30deg) saturate(0.8)' }}
+        >
+          <source src="/videos/devops-coding.webm" type="video/webm" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-900/30 via-transparent to-orange-800/20"></div>
       </div>
 
-      <div className="absolute w-full h-screen" style={{ top: '200vh', opacity: 0.5 }}>
-        <iframe
-          src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
-          frameBorder='0'
-          width='100%'
-          height='100%'
-          style={{ border: 'none', transform: 'scale(1.2)' }}
-          title="Extended 3D Animation 2"
-        />
+      {/* Server/DataCenter Video - Skills/Services Sections */}
+      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '200vh', opacity: 0.5 }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ filter: 'hue-rotate(45deg) saturate(0.7)' }}
+        >
+          <source src="/videos/server-datacenter.webm" type="video/webm" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-800/20 via-transparent to-orange-700/30"></div>
       </div>
 
+      {/* Extended 3D Animation - Portfolio Section */}
       <div className="absolute w-full h-screen" style={{ top: '300vh', opacity: 0.4 }}>
         <iframe
           src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
           frameBorder='0'
           width='100%'
           height='100%'
-          style={{ border: 'none', transform: 'rotateX(10deg)' }}
-          title="Extended 3D Animation 3"
+          style={{ border: 'none', transform: 'rotateX(10deg) scale(1.1)' }}
+          title="Extended 3D Animation"
         />
       </div>
 
-      <div className="absolute w-full h-screen" style={{ top: '400vh', opacity: 0.3 }}>
-        <iframe
-          src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
-          frameBorder='0'
-          width='100%'
-          height='100%'
-          style={{ border: 'none', transform: 'rotateZ(5deg) scale(0.9)' }}
-          title="Extended 3D Animation 4"
-        />
+      {/* DevOps Coding Video (Mirrored) - Contact Section */}
+      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '400vh', opacity: 0.3 }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ filter: 'hue-rotate(60deg) saturate(0.6)', transform: 'scaleX(-1)' }}
+        >
+          <source src="/videos/devops-coding.webm" type="video/webm" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-700/20 via-transparent to-orange-600/25"></div>
       </div>
 
       <div style={{ opacity: 0.25, position: 'relative', zIndex: 1 }}>
