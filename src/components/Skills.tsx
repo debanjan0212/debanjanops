@@ -21,11 +21,12 @@ const Skills = () => {
   const [selectedSkill, setSelectedSkill] = useState<any>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end 80%"]
+    offset: ["start end", "end start"]
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"])
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"])
+  // Remove problematic parallax transforms that hide content too early
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "0%"])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "0%"])
 
   const skillCategories = [
     {
