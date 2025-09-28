@@ -459,24 +459,49 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-4"
               >
+                {/* Projects Button with Go Home style */}
                 <Button
                   size="lg"
                   onClick={scrollToPortfolio}
-                  className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-8 py-3 text-lg font-semibold shadow-xl transition-all duration-300"
+                  className="relative bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-8 py-4 text-lg font-bold shadow-xl transition-all duration-300 rounded-none border-l-4 border-red-800 hover:border-red-900 transform hover:scale-105"
                   data-testid="button-projects"
                 >
-                  <FolderOpen className="w-5 h-5 mr-2" />
-                  MY PROJECTS
+                  <div className="flex items-center gap-2">
+                    <FolderOpen className="w-5 h-5" />
+                    <span>MY PROJECTS</span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-none" />
                 </Button>
 
+                {/* About Button with Go Home style */}
                 <Button
                   variant="outline"
-                  size="sm"
-                  className="px-4 sm:px-8 py-2 sm:py-3 text-sm sm:text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300"
+                  size="lg"
+                  className="relative px-8 py-4 text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300 rounded-none border-l-4 border-white/50 hover:border-white/70 transform hover:scale-105"
                   onClick={scrollToAbout}
                   data-testid="button-about"
                 >
-                  Learn More
+                  <div className="flex items-center gap-2">
+                    <span>ABOUT ME</span>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-none" />
+                </Button>
+
+                {/* Resume Download Coming Soon */}
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  disabled
+                  className="relative px-8 py-4 text-lg text-gray-400 border border-gray-600 hover:bg-gray-800/50 transition-all duration-300 rounded-none border-l-4 border-gray-600 cursor-not-allowed"
+                  data-testid="button-resume"
+                >
+                  <div className="flex items-center gap-2">
+                    <Download className="w-5 h-5" />
+                    <span>RESUME</span>
+                  </div>
+                  <div className="absolute -top-2 -right-2 bg-yellow-500 text-black text-xs px-2 py-1 rounded-full font-bold">
+                    COMING SOON
+                  </div>
                 </Button>
               </motion.div>
             </motion.div>

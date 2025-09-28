@@ -1,7 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion"
 import { useRef, useState } from "react"
 import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { X } from "lucide-react"
@@ -25,85 +24,40 @@ const Skills = () => {
     {
       title: "Cloud Platforms",
       icon: Cloud,
-      efficiency: 95,
       color: "hsl(220, 90%, 60%)",
       skills: [
-        { name: "AWS (EC2, EKS, S3, Lambda)", efficiency: 95 },
-        { name: "Azure (AKS, Blob Storage)", efficiency: 90 },
-        { name: "GCP (GKE, Cloud Storage)", efficiency: 85 },
-        { name: "Multi-cloud Architecture", efficiency: 92 },
-        { name: "Cloud Cost Optimization", efficiency: 90 },
-        { name: "Cloud Security & Compliance", efficiency: 88 }
+        { name: "AWS", fullName: "Amazon Web Services", efficiency: 95 },
+        { name: "Azure", fullName: "Microsoft Azure", efficiency: 90 },
+        { name: "GCP", fullName: "Google Cloud Platform", efficiency: 85 },
+        { name: "Multi-cloud", fullName: "Multi-cloud Architecture", efficiency: 92 },
+        { name: "Cost Optimization", fullName: "Cloud Cost Optimization", efficiency: 90 },
+        { name: "Security", fullName: "Cloud Security & Compliance", efficiency: 88 }
       ],
     },
     {
       title: "Container & Orchestration", 
       icon: Server,
-      efficiency: 92,
       color: "hsl(160, 85%, 55%)",
       skills: [
-        { name: "Kubernetes Administration", efficiency: 94 },
-        { name: "Docker Container Management", efficiency: 96 },
-        { name: "Helm Charts & Packaging", efficiency: 88 },
-        { name: "Container Security", efficiency: 85 },
-        { name: "Service Mesh (Istio)", efficiency: 82 },
-        { name: "Container Registry", efficiency: 90 }
+        { name: "Kubernetes", fullName: "Kubernetes Administration", efficiency: 94 },
+        { name: "Docker", fullName: "Docker Container Management", efficiency: 96 },
+        { name: "Helm", fullName: "Helm Charts & Packaging", efficiency: 88 },
+        { name: "Security", fullName: "Container Security", efficiency: 85 },
+        { name: "Istio", fullName: "Service Mesh (Istio)", efficiency: 82 },
+        { name: "Registry", fullName: "Container Registry", efficiency: 90 }
       ],
     },
     {
       title: "DevOps Automation",
       icon: Settings,
-      efficiency: 90,
       color: "hsl(280, 80%, 65%)",
       skills: [
-        { name: "Jenkins Pipeline Development", efficiency: 92 },
-        { name: "GitLab CI/CD & GitHub Actions", efficiency: 90 },
-        { name: "ArgoCD GitOps", efficiency: 85 },
-        { name: "Terraform Infrastructure", efficiency: 94 },
-        { name: "Ansible Configuration", efficiency: 88 },
-        { name: "Automation Scripting", efficiency: 95 }
-      ],
-    },
-    {
-      title: "Monitoring & Observability",
-      icon: Monitor,
-      efficiency: 88,
-      color: "hsl(30, 95%, 60%)",
-      skills: [
-        { name: "ELK Stack Implementation", efficiency: 90 },
-        { name: "Prometheus & Grafana", efficiency: 92 },
-        { name: "Datadog & New Relic", efficiency: 85 },
-        { name: "Performance Monitoring", efficiency: 88 },
-        { name: "Custom Metrics & Alerts", efficiency: 90 },
-        { name: "Distributed Tracing", efficiency: 82 }
-      ],
-    },
-    {
-      title: "Programming & Scripting",
-      icon: Code,
-      efficiency: 85,
-      color: "hsl(120, 70%, 55%)",
-      skills: [
-        { name: "Python Development", efficiency: 90 },
-        { name: "Bash/Shell Scripting", efficiency: 95 },
-        { name: "Go Development", efficiency: 80 },
-        { name: "YAML & JSON", efficiency: 92 },
-        { name: "Git Version Control", efficiency: 94 },
-        { name: "API Development", efficiency: 85 }
-      ],
-    },
-    {
-      title: "Security & Compliance",
-      icon: Shield,
-      efficiency: 87,
-      color: "hsl(0, 85%, 65%)",
-      skills: [
-        { name: "Vulnerability Assessment", efficiency: 88 },
-        { name: "RBAC & Identity Management", efficiency: 90 },
-        { name: "Compliance (SOX, PCI DSS)", efficiency: 85 },
-        { name: "Secrets Management", efficiency: 92 },
-        { name: "Network Security", efficiency: 86 },
-        { name: "Incident Response", efficiency: 84 }
+        { name: "Jenkins", fullName: "Jenkins Pipeline Development", efficiency: 92 },
+        { name: "GitLab CI/CD", fullName: "GitLab CI/CD & GitHub Actions", efficiency: 90 },
+        { name: "ArgoCD", fullName: "ArgoCD GitOps", efficiency: 85 },
+        { name: "Terraform", fullName: "Terraform Infrastructure", efficiency: 94 },
+        { name: "Ansible", fullName: "Ansible Configuration", efficiency: 88 },
+        { name: "Automation", fullName: "Automation Scripting", efficiency: 95 }
       ],
     }
   ];
@@ -122,84 +76,118 @@ const Skills = () => {
             Technical <span className="text-primary">Skills</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto professional-text">
-            Interactive skill wheel - Click on any skill to see proficiency levels
+            Click on any skill to see detailed proficiency levels
           </p>
         </motion.div>
 
-        {/* Circular Skills Layout */}
-        <div className="relative w-full max-w-4xl mx-auto mb-16">
-          <div className="relative w-[600px] h-[600px] mx-auto">
-            {/* Center Hub */}
-            <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-            >
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center shadow-2xl">
-                <div className="text-white text-center">
-                  <div className="text-lg font-bold">DevOps</div>
-                  <div className="text-sm opacity-90">Engineer</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Skill Category Circles */}
-            {skillCategories.map((category, index) => {
-              const angle = (index * 360) / skillCategories.length;
-              const radius = 200;
-              const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
-              const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
-              const Icon = category.icon;
-
-              return (
-                <motion.div
-                  key={category.title}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
-                  className="absolute cursor-pointer group"
-                  style={{
-                    left: `calc(50% + ${x}px)`,
-                    top: `calc(50% + ${y}px)`,
-                    transform: 'translate(-50%, -50%)'
-                  }}
-                  onClick={() => setSelectedSkill(category)}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+        {/* Large Circular Skills Containers */}
+        <div className="grid md:grid-cols-3 gap-12 mb-16">
+          {skillCategories.map((category, categoryIndex) => {
+            const Icon = category.icon;
+            
+            return (
+              <motion.div
+                key={category.title}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+                transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                className="flex flex-col items-center"
+              >
+                {/* Large Circular Container */}
+                <div className="relative w-80 h-80 mb-6">
+                  {/* Outer Circle */}
                   <div 
-                    className="w-24 h-24 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 group-hover:shadow-xl border-4 border-white/20"
-                    style={{ backgroundColor: category.color }}
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  
-                  {/* Skill Title */}
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-center">
-                    <div className="text-sm font-semibold text-foreground whitespace-nowrap">
-                      {category.title}
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      {category.efficiency}% Efficiency
-                    </div>
-                  </div>
-
-                  {/* Connection Line */}
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : { scale: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + 0.6 }}
-                    className="absolute top-1/2 left-1/2 origin-left h-0.5 bg-gradient-to-r from-primary/60 to-transparent"
-                    style={{
-                      width: `${radius - 60}px`,
-                      transform: `translate(-50%, -50%) rotate(${angle + 90}deg)`
+                    className="absolute inset-0 rounded-full border-4 border-opacity-30 flex items-center justify-center shadow-2xl"
+                    style={{ 
+                      backgroundColor: `${category.color}20`,
+                      borderColor: category.color 
                     }}
-                  />
-                </motion.div>
-              );
-            })}
-          </div>
+                  >
+                    {/* Center Icon */}
+                    <div 
+                      className="w-20 h-20 rounded-full flex items-center justify-center z-20"
+                      style={{ backgroundColor: category.color }}
+                    >
+                      <Icon className="w-10 h-10 text-white" />
+                    </div>
+
+                    {/* Rotating Skills Around the Circle */}
+                    {category.skills.map((skill, skillIndex) => {
+                      const angle = (skillIndex * 360) / category.skills.length;
+                      const radius = 120;
+                      const x = Math.cos((angle - 90) * (Math.PI / 180)) * radius;
+                      const y = Math.sin((angle - 90) * (Math.PI / 180)) * radius;
+                      
+                      // Random rotation direction and speed
+                      const rotationDirection = skillIndex % 2 === 0 ? 1 : -1;
+                      const rotationSpeed = 10 + (skillIndex * 2);
+
+                      return (
+                        <motion.div
+                          key={skill.name}
+                          className="absolute cursor-pointer group"
+                          style={{
+                            left: `calc(50% + ${x}px)`,
+                            top: `calc(50% + ${y}px)`,
+                            transform: 'translate(-50%, -50%)'
+                          }}
+                          animate={{
+                            rotate: rotationDirection * 360
+                          }}
+                          transition={{
+                            duration: rotationSpeed,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                          onClick={() => setSelectedSkill({
+                            ...skill,
+                            category: category.title,
+                            categoryColor: category.color
+                          })}
+                          whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <div 
+                            className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20 backdrop-blur-sm transition-all duration-300 group-hover:shadow-xl"
+                            style={{ 
+                              backgroundColor: `${category.color}90`,
+                              backdropFilter: 'blur(10px)'
+                            }}
+                          >
+                            <motion.div
+                              animate={{
+                                rotate: -rotationDirection * 360
+                              }}
+                              transition={{
+                                duration: rotationSpeed,
+                                repeat: Infinity,
+                                ease: "linear"
+                              }}
+                              className="text-white font-bold text-xs text-center leading-tight"
+                            >
+                              {skill.name}
+                            </motion.div>
+                          </div>
+
+                          {/* Skill efficiency indicator */}
+                          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="bg-black/80 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                              {skill.efficiency}%
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Category Title */}
+                <h3 className="text-xl font-bold text-center professional-heading">
+                  {category.title}
+                </h3>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Key Metrics */}
@@ -240,7 +228,7 @@ const Skills = () => {
         </motion.div>
       </div>
 
-      {/* Skill Detail Modal */}
+      {/* Individual Skill Detail Modal */}
       <AnimatePresence>
         {selectedSkill && (
           <motion.div
@@ -255,20 +243,22 @@ const Skills = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-card border border-border rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-card border border-border rounded-2xl p-8 max-w-md w-full"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-4">
                   <div 
                     className="w-16 h-16 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: selectedSkill.color }}
+                    style={{ backgroundColor: selectedSkill.categoryColor }}
                   >
-                    <selectedSkill.icon className="w-8 h-8 text-white" />
+                    <div className="text-white font-bold text-sm text-center">
+                      {selectedSkill.name}
+                    </div>
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold professional-heading">{selectedSkill.title}</h3>
-                    <p className="text-muted-foreground">Overall Efficiency: {selectedSkill.efficiency}%</p>
+                    <h3 className="text-xl font-bold professional-heading">{selectedSkill.fullName}</h3>
+                    <p className="text-muted-foreground text-sm">From {selectedSkill.category}</p>
                   </div>
                 </div>
                 <Button
@@ -283,44 +273,33 @@ const Skills = () => {
 
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-lg font-semibold mb-4">Skill Breakdown</h4>
-                  <div className="space-y-4">
-                    {selectedSkill.skills.map((skill: any, index: number) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="space-y-2"
-                      >
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium">{skill.name}</span>
-                          <span className="text-sm text-muted-foreground">{skill.efficiency}%</span>
-                        </div>
-                        <Progress value={skill.efficiency} className="h-2" />
-                      </motion.div>
-                    ))}
+                  <h4 className="text-lg font-semibold mb-4">Proficiency Level</h4>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium">Overall Efficiency</span>
+                      <span className="text-sm text-muted-foreground">{selectedSkill.efficiency}%</span>
+                    </div>
+                    <Progress value={selectedSkill.efficiency} className="h-3" />
                   </div>
                 </div>
 
                 <div className="pt-6 border-t border-border">
-                  <h4 className="text-lg font-semibold mb-2">Proficiency Level</h4>
-                  <div className="flex items-center gap-2">
-                    <div className="flex-1 bg-muted rounded-full h-3 overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${selectedSkill.efficiency}%` }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="h-full bg-gradient-to-r from-primary to-purple-500"
-                      />
+                  <div className="text-center">
+                    <div 
+                      className="text-6xl font-bold mb-2"
+                      style={{ color: selectedSkill.categoryColor }}
+                    >
+                      {selectedSkill.efficiency}%
                     </div>
-                    <span className="text-sm font-bold">{selectedSkill.efficiency}%</span>
+                    <p className="text-lg font-semibold mb-2">
+                      {selectedSkill.efficiency >= 90 ? "Expert Level" : 
+                       selectedSkill.efficiency >= 80 ? "Advanced" : 
+                       selectedSkill.efficiency >= 70 ? "Intermediate" : "Developing"}
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Years of hands-on experience with {selectedSkill.fullName.toLowerCase()}
+                    </p>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-2">
-                    {selectedSkill.efficiency >= 90 ? "Expert Level" : 
-                     selectedSkill.efficiency >= 80 ? "Advanced" : 
-                     selectedSkill.efficiency >= 70 ? "Intermediate" : "Developing"}
-                  </p>
                 </div>
               </div>
             </motion.div>
