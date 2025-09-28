@@ -471,7 +471,7 @@ const Hero = ({ showBackground = false }: { showBackground?: boolean }) => {
             >
               {/* Clean portrait with natural pop-out and floating animation */}
               <motion.img
-                src="https://i.postimg.cc/DfqWFVx3/Gemini-Generated-Image-kjzignkjzignkjzi.png"
+                src="https://i.postimg.cc/dVmNWcD6/IMG-4625.jpg"
                 alt="Debanjan Das - Professional Portrait"
                 className="w-80 h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-lg"
                 style={{
