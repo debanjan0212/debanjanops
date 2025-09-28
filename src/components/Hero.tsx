@@ -511,15 +511,9 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative flex justify-center lg:justify-end items-center"
             >
-              {/* Clean portrait with natural pop-out and floating animation - Mobile Optimized */}
-              <motion.img
-                src="https://i.postimg.cc/zGS3tZ3N/IMG-4625-removebg-preview.png"
-                alt="Debanjan Das - Professional Portrait"
-                className="w-48 h-60 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-lg"
-                style={{
-                  filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
-                  background: 'transparent'
-                }}
+              {/* Container with warm gradient background */}
+              <motion.div
+                className="relative"
                 animate={{
                   y: [0, -10, 0],
                   x: [0, 5, 0, -5, 0]
@@ -529,8 +523,41 @@ const Hero = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                data-testid="img-professional-portrait"
-              />
+              >
+                {/* Beautiful warm gradient background */}
+                <div 
+                  className="absolute inset-0 rounded-3xl"
+                  style={{
+                    background: 'linear-gradient(135deg, #FDF6E3 0%, #F5E6D3 25%, #E8D5B7 50%, #D4AC7A 75%, #CD853F 100%)',
+                    transform: 'scale(1.1)',
+                    filter: 'blur(20px)',
+                    opacity: 0.7,
+                    zIndex: -1
+                  }}
+                />
+                
+                {/* Secondary gradient layer for depth */}
+                <div 
+                  className="absolute inset-0 rounded-3xl"
+                  style={{
+                    background: 'radial-gradient(ellipse at 30% 30%, rgba(255, 248, 220, 0.8) 0%, rgba(250, 235, 215, 0.4) 40%, transparent 70%)',
+                    transform: 'scale(1.05)',
+                    zIndex: -1
+                  }}
+                />
+
+                {/* Professional portrait with enhanced styling */}
+                <motion.img
+                  src="https://i.postimg.cc/zGS3tZ3N/IMG-4625-removebg-preview.png"
+                  alt="Debanjan Das - Professional Portrait"
+                  className="w-48 h-60 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-2xl"
+                  style={{
+                    filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.3)) drop-shadow(0 15px 30px rgba(139, 69, 19, 0.2))',
+                    background: 'transparent'
+                  }}
+                  data-testid="img-professional-portrait"
+                />
+              </motion.div>
             </motion.div>
 
           </div>
