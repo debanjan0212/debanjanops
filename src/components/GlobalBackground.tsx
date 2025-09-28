@@ -131,21 +131,6 @@ export default function GlobalBackground() {
         <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 via-transparent to-orange-500/25"></div>
       </div>
 
-      {/* Contact Section - DevOps Coding Video (Mirrored) */}
-      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '500vh', opacity: 0.25 }}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          style={{ filter: 'hue-rotate(90deg) saturate(0.4)', transform: 'scaleX(-1)' }}
-        >
-          <source src="/videos/devops-coding.webm" type="video/webm" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 via-transparent to-orange-400/25"></div>
-      </div>
-
       <div style={{ opacity: 0.15, position: 'relative', zIndex: 1 }}>
         <ProgrammableDevOpsLayer mouseX={smoothMouseX} mouseY={smoothMouseY} />
       </div>
