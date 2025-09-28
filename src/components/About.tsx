@@ -7,8 +7,8 @@ import { Calendar, MapPin, Briefcase, GraduationCap } from "lucide-react"
 const highlights = [
   {
     icon: GraduationCap,
-    title: "Bachelor's in EEE",
-    description: "VIT Vellore (2018) • CGPA: 8.2/10"
+    title: "B.Tech EEE",
+    description: "VIT Vellore • CGPA: 8.48 (84.8%)"
   },
   {
     icon: Briefcase,
@@ -84,8 +84,8 @@ export default function About() {
 
               <div className="bg-muted/20 border-l-4 border-golden p-4 rounded-r-lg">
                 <p className="text-lg leading-relaxed text-foreground font-serif">
-                  I began my journey in technology with a B.Tech in Electrical and Electronics Engineering from VIT Vellore (2018), 
-                  and since then, I've worked with some of the world's leading organizations including{" "}
+                  I began my journey in technology with a B.Tech in Electrical and Electronics Engineering from VIT Vellore (2018) 
+                  with a CGPA of 8.48 (equivalent to 84.8%), and since then, I've worked with some of the world's leading organizations including{" "}
                   <span className="font-semibold text-foreground">Capgemini, TCS, TransUnion, and now Signeasy</span>. 
                   My career has been shaped around cloud-native solutions, infrastructure automation, monitoring, and cost optimization, 
                   enabling businesses to run smoothly and efficiently.
