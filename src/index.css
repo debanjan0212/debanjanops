@@ -15,24 +15,59 @@
   --elevate-2: rgba(0,0,0, .08);
 
   --background: 35 15% 97%;
+
   --foreground: 25 15% 15%;
+
   --border: 30 20% 82%;
+
   --card: 35 20% 95%;
+
   --card-foreground: 25 15% 15%;
+
   --card-border: 30 25% 88%;
+
+  --sidebar: 30 25% 90%;
+
+  --sidebar-foreground: 25 15% 15%;
+
+  --sidebar-border: 30 20% 82%;
+
+  --sidebar-primary: 25 60% 45%;
+
+  --sidebar-primary-foreground: 35 20% 95%;
+
+  --sidebar-accent: 30 20% 82%;
+
+  --sidebar-accent-foreground: 25 15% 15%;
+
+  --sidebar-ring: 25 60% 45%;
+
   --popover: 30 25% 88%;
+
   --popover-foreground: 25 15% 15%;
+
   --popover-border: 30 20% 78%;
+
   --primary: 25 60% 45%;
+
   --primary-foreground: 35 20% 95%;
+
   --secondary: 30 25% 80%;
+
   --secondary-foreground: 25 15% 15%;
+
   --muted: 30 20% 85%;
+
   --muted-foreground: 25 15% 40%;
+
   --accent: 30 20% 83%;
+
   --accent-foreground: 25 15% 15%;
+
   --destructive: 0 70% 52%;
+
   --destructive-foreground: 0 0% 98%;
+
   --input: 30 20% 78%;
   --ring: 25 60% 45%;
   --chart-1: 25 60% 45%;
@@ -43,36 +78,104 @@
 
   --font-sans: Inter, Open Sans, sans-serif;
   --font-serif: Georgia, serif;
-  --radius: 0.5rem;
+  --font-mono: 'Fira Code', Consolas, 'Courier New', monospace;
+
+  --radius: 0.75rem;
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
 .dark {
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
+
   --opaque-button-border-intensity: 9;  /* In terms of percentages */
+
   /* Backgrounds applied on top of other backgrounds when hovered/active */
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
 
   --background: 25 15% 8%;
+
   --foreground: 35 20% 92%;
+
   --border: 25 15% 18%;
+
   --card: 25 15% 12%;
+
   --card-foreground: 35 20% 92%;
+
   --card-border: 25 15% 20%;
+
+  --sidebar: 25 15% 10%;
+
+  --sidebar-foreground: 35 20% 92%;
+
+  --sidebar-border: 25 15% 18%;
+
+  --sidebar-primary: 30 65% 65%;
+
+  --sidebar-primary-foreground: 25 15% 8%;
+
+  --sidebar-accent: 25 15% 20%;
+
+  --sidebar-accent-foreground: 35 20% 92%;
+
+  --sidebar-ring: 30 65% 65%;
+
   --popover: 25 15% 18%;
+
   --popover-foreground: 35 20% 92%;
+
   --popover-border: 25 15% 25%;
+
   --primary: 30 65% 65%;
+
   --primary-foreground: 25 15% 8%;
+
   --secondary: 25 15% 25%;
+
   --secondary-foreground: 35 20% 92%;
+
   --muted: 25 10% 20%;
+
   --muted-foreground: 30 15% 65%;
+
   --accent: 25 10% 22%;
+
   --accent-foreground: 35 20% 92%;
+
   --destructive: 0 70% 52%;
+
   --destructive-foreground: 0 0% 98%;
+
+  /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
   --input: 25 15% 28%;
   --ring: 30 65% 65%;
   --chart-1: 30 65% 65%;
@@ -80,6 +183,34 @@
   --chart-3: 35 45% 50%;
   --chart-4: 20 55% 60%;
   --chart-5: 15 65% 70%;
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(from hsl(var(--sidebar-primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(from hsl(var(--sidebar-accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(from hsl(var(--primary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(from hsl(var(--secondary)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(from hsl(var(--accent)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
 @layer base {
