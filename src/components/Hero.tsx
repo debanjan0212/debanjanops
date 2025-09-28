@@ -329,7 +329,24 @@ function ProgrammableDevOpsLayer({ mouseX, mouseY }: { mouseX: any; mouseY: any 
   )
 }
 
-const Hero = ({ showBackground = false }: { showBackground?: boolean }) => {
+const Hero = () => {
+  // Mouse tracking for parallax effects
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const smoothMouseX = useSpring(mouseX, { damping: 50, stiffness: 300 })
+  const smoothMouseY = useSpring(mouseY, { damping: 50, stiffness: 300 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 2 - 1
+      const y = (e.clientY / window.innerHeight) * 2 - 1
+      mouseX.set(x)
+      mouseY.set(y)
+    }
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [mouseX, mouseY])
+
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
   }
@@ -340,8 +357,10 @@ const Hero = ({ showBackground = false }: { showBackground?: boolean }) => {
 
   return (
     <section id="home" className="relative min-h-screen overflow-hidden bg-black">
-      {/* Enhanced 3D Background Layer (disabled globally unless explicitly enabled) */}
-      {showBackground && <Enhanced3DBackgroundLayer />}
+      {/* Floating DevOps elements and 3D background */}
+      <div className="absolute inset-0 z-0">
+        <ProgrammableDevOpsLayer mouseX={smoothMouseX} mouseY={smoothMouseY} />
+      </div>
       
       {/* Content Layer - Split Layout Design */}
       <div className="relative z-20 min-h-screen flex items-center">
