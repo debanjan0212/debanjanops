@@ -6,6 +6,11 @@ import { Calendar, MapPin, Briefcase, GraduationCap } from "lucide-react"
 
 const highlights = [
   {
+    icon: GraduationCap,
+    title: "B.Tech EEE",
+    description: "VIT Vellore (2018)"
+  },
+  {
     icon: Briefcase,
     title: "7+ Years",
     description: "Professional Experience"
