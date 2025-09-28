@@ -1,103 +1,164 @@
-import { GraduationCap, MapPin, Calendar } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import { Card } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Calendar, MapPin, Briefcase, GraduationCap } from "lucide-react"
 
-const About = () => {
+const highlights = [
+  {
+    icon: Briefcase,
+    title: "7+ Years",
+    description: "Professional Experience"
+  },
+  {
+    icon: Calendar,
+    title: "50+ Projects",
+    description: "Successfully Delivered"
+  },
+  {
+    icon: GraduationCap,
+    title: "99.9%",
+    description: "Uptime Achieved"
+  }
+]
+
+const technologies = [
+  "AWS", "Kubernetes", "Docker", "Terraform", "Jenkins",
+  "Python", "Bash", "Ansible", "ArgoCD", "ELK Stack"
+]
+
+export default function About() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+
   return (
-    <section id="about" className="py-20 bg-warm-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-coffee-dark mb-6">
-            About Me
+    <section id="about" className="py-20 px-4 relative z-10 bg-white" style={{ backgroundColor: '#ffffff', background: '#ffffff', colorScheme: 'light' }}>
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 professional-heading">
+            About <span className="text-primary">Me</span>
           </h2>
-          <p className="text-xl text-coffee-light max-w-3xl mx-auto">
-            Passionate DevOps engineer with a proven track record of building scalable, 
-            reliable infrastructure solutions
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto professional-text">
+            Passionate Site Reliability Engineer with expertise in building resilient, scalable infrastructure
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Bio Section */}
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-warm-white to-cream/80 rounded-2xl p-8 shadow-soft border border-beige-light/50">
-              <div className="space-y-6 font-serif text-coffee-dark">
-                <p className="text-xl leading-relaxed font-medium first-letter:text-6xl first-letter:font-bold first-letter:text-golden first-letter:float-left first-letter:mr-3 first-letter:mt-1">
-                  Hi, I'm Debanjan Das, a Senior Site Reliability Engineer (SRE) and DevOps Specialist with over 7 years of experience building, automating, and scaling reliable cloud systems.
-                </p>
-                
-                <p className="text-lg leading-relaxed text-coffee-medium pl-4 border-l-4 border-golden/30">
-                  I began my journey in technology with a B.Tech in Electrical and Electronics Engineering from VIT Vellore (2018), and since then, I've worked with some of the world's leading organizations including <span className="font-semibold text-coffee-dark">Capgemini, TCS, TransUnion, and now Signeasy</span>. My career has been shaped around cloud-native solutions, infrastructure automation, monitoring, and cost optimization, enabling businesses to run smoothly and efficiently.
-                </p>
-                
-                <p className="text-lg leading-relaxed text-coffee-medium">
-                  I'm deeply passionate about automation and operational excellence — whether it's creating scalable architectures with <span className="font-semibold text-golden">Terraform, Ansible, and Kubernetes</span>, optimizing cloud infrastructure on <span className="font-semibold text-golden">AWS</span>, or designing CI/CD pipelines with <span className="font-semibold text-golden">Jenkins and ArgoCD</span>. I thrive on solving complex infrastructure challenges and ensuring systems are always resilient, secure, and cost-effective.
-                </p>
-                
-                <p className="text-lg leading-relaxed text-coffee-medium pl-4 border-l-4 border-golden/30">
-                  Beyond traditional DevOps, I enjoy exploring AI-driven tools like <span className="font-semibold text-coffee-dark">ChatGPT, Anthropix, Perplexity, and Cursor</span>, integrating them into workflows to enhance productivity and innovation.
-                </p>
-                
-                <p className="text-lg leading-relaxed text-coffee-medium italic">
-                  When I'm not engineering systems, I'm constantly learning, experimenting with new technologies, and refining processes that make engineering teams more efficient and organizations more agile.
-                </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6"
+          >
+            <div className="space-y-4">
+              <p className="text-lg leading-relaxed professional-text enhanced-text">
+                Hello! I'm Debanjan, a passionate Senior Site Reliability Engineer at Signeasy with over 7 years
+                of experience building, automating, and scaling reliable cloud systems. Based in Bengaluru, I specialize
+                in cloud-native solutions, infrastructure automation, and operational excellence.
+              </p>
+
+              <p className="text-lg leading-relaxed text-muted-foreground professional-text enhanced-text">
+                My journey in tech has taken me through leading organizations including Capgemini, TCS, TransUnion,
+                and now Signeasy. I thrive on solving complex infrastructure challenges, designing scalable
+                architectures with Terraform and Kubernetes, and ensuring systems are always resilient, secure, and cost-effective.
+              </p>
+            </div>
+
+            {/* Technologies */}
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold professional-heading">Technologies I Work With</h3>
+              <div className="flex flex-wrap gap-2">
+                {technologies.map((tech, index) => (
+                  <motion.div
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  >
+                    <Badge variant="secondary" className="text-sm py-1">
+                      {tech}
+                    </Badge>
+                  </motion.div>
+                ))}
               </div>
             </div>
-          </div>
 
-          {/* Education Card */}
-          <div className="space-y-6">
-            <Card className="gradient-card border-0 shadow-medium hover:shadow-strong transition-smooth">
-              <CardContent className="p-8">
-                <div className="flex items-start space-x-4">
-                  <div className="bg-golden p-3 rounded-lg">
-                    <GraduationCap className="w-6 h-6 text-coffee-dark" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-coffee-dark mb-2">Education</h3>
-                    <div className="space-y-3">
+            {/* Location & Contact Info */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span>Bengaluru, India</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Briefcase className="h-4 w-4 text-primary" />
+                <span>Senior SRE at Signeasy</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column - Highlights Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="space-y-6"
+          >
+            {highlights.map((highlight, index) => {
+              const Icon = highlight.icon
+              return (
+                <motion.div
+                  key={highlight.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.2 }}
+                >
+                  <Card className="p-6 hover-elevate transition-all duration-300">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                        <Icon className="h-6 w-6 text-primary" />
+                      </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-coffee-medium">
-                          B.Tech in Electrical and Electronics Engineering
-                        </h4>
-                        <div className="flex items-center text-coffee-light mt-1">
-                          <MapPin className="w-4 h-4 mr-1" />
-                          <span>Vellore Institute of Technology</span>
-                        </div>
-                        <div className="flex items-center text-coffee-light mt-1">
-                          <Calendar className="w-4 h-4 mr-1" />
-                          <span>2014 – 2018</span>
-                        </div>
-                        <div className="mt-2">
-                          <span className="bg-golden text-coffee-dark px-3 py-1 rounded-full text-sm font-semibold">
-                            CGPA: 8.48 (84.6%)
-                          </span>
-                        </div>
+                        <h3 className="text-xl font-semibold">{highlight.title}</h3>
+                        <p className="text-muted-foreground">{highlight.description}</p>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                  </Card>
+                </motion.div>
+              )
+            })}
 
-            {/* Quick Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              <Card className="gradient-card border-0 shadow-soft hover:shadow-medium transition-smooth">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-golden mb-2">7+</div>
-                  <div className="text-coffee-medium font-medium">Years Experience</div>
-                </CardContent>
+            {/* Call to Action Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+            >
+              <Card className="p-6 bg-gradient-to-r from-primary/5 to-purple-500/5 border-primary/20">
+                <div className="text-center">
+                  <h3 className="text-lg font-semibold mb-2">Let's Work Together</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Ready to bring your ideas to life with cutting-edge technology?
+                  </p>
+                  <button
+                    onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                    className="text-primary font-medium hover:underline"
+                    data-testid="button-contact-cta"
+                  >
+                    Get In Touch →
+                  </button>
+                </div>
               </Card>
-              <Card className="gradient-card border-0 shadow-soft hover:shadow-medium transition-smooth">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-golden mb-2">4</div>
-                  <div className="text-coffee-medium font-medium">Companies</div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
-  );
-};
-
-export default About;
+  )
+}
