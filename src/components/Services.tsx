@@ -102,90 +102,69 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Horizontal Stack Carousel */}
+        {/* Horizontal Stack Carousel - Mobile Optimized */}
         <div 
-          className="relative h-[500px] mb-16 overflow-hidden"
+          className="relative h-[400px] md:h-[500px] mb-16 overflow-hidden"
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
         >
           {/* Navigation Buttons */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-4 z-30">
+          <div className="absolute top-1/2 -translate-y-1/2 left-2 md:left-4 z-30">
             <Button
               variant="outline"
               size="icon"
               onClick={prevService}
-              className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
+              className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
             </Button>
           </div>
-          <div className="absolute top-1/2 -translate-y-1/2 right-4 z-30">
+          <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-4 z-30">
             <Button
               variant="outline"
               size="icon"
               onClick={nextService}
-              className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
+              className="h-8 w-8 md:h-10 md:w-10 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
             </Button>
           </div>
 
           {/* Service Cards Horizontal Stack */}
-          <div className="relative w-full h-full flex items-center justify-center">
+          <div className="relative w-full h-full flex items-center justify-center px-4">
             {services.map((service, index) => {
               const Icon = service.icon
               const isActive = index === currentIndex
               const isPrev = index === (currentIndex - 1 + services.length) % services.length
               const isNext = index === (currentIndex + 1) % services.length
               
-              let position = 'hidden'
-              let transform = 'translate-x-0'
-              let scale = 'scale-75'
-              let opacity = 'opacity-0'
-              let zIndex = 'z-10'
+              // Mobile optimized spacing
+              const mobileSpacing = 200
+              const desktopSpacing = 280
               
-              if (isActive) {
-                position = 'block'
-                transform = 'translate-x-0'
-                scale = 'scale-100'
-                opacity = 'opacity-100'
-                zIndex = 'z-20'
-              } else if (isPrev) {
-                position = 'block'
-                transform = '-translate-x-[280px]'
-                scale = 'scale-75'
-                opacity = 'opacity-60'
-                zIndex = 'z-10'
-              } else if (isNext) {
-                position = 'block'
-                transform = 'translate-x-[280px]'
-                scale = 'scale-75'
-                opacity = 'opacity-60'
-                zIndex = 'z-10'
-              }
-
               return (
                 <motion.div
                   key={service.title}
                   initial={{ opacity: 0, scale: 0.75 }}
                   animate={{ 
-                    opacity: isActive ? 1 : isPrev || isNext ? 0.6 : 0,
-                    scale: isActive ? 1 : 0.75,
-                    x: isActive ? 0 : isPrev ? -280 : isNext ? 280 : 0
+                    opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
+                    scale: isActive ? 1 : 0.8,
+                    x: isActive ? 0 : isPrev ? -mobileSpacing : isNext ? mobileSpacing : 0
                   }}
                   transition={{ 
                     duration: 0.5,
                     ease: [0.25, 0.46, 0.45, 0.94]
                   }}
-                  className={`absolute inset-0 w-full max-w-md mx-auto ${position} ${zIndex}`}
+                  className="absolute inset-0 flex items-center justify-center"
                   style={{ 
-                    left: '50%', 
-                    transform: 'translateX(-50%)',
-                    width: '400px',
-                    height: '450px'
+                    width: '280px',
+                    height: '350px',
+                    left: '50%',
+                    top: '50%',
+                    transform: 'translate(-50%, -50%)'
                   }}
                 >
-                  <Card className={`p-6 h-full transition-all duration-500 ${
+                  <Card className={`p-4 md:p-6 w-full h-full transition-all duration-500 ${
                     isActive 
                       ? 'shadow-xl border-primary/30 bg-card/95 backdrop-blur-sm' 
                       : 'shadow-md border-border/30 bg-card/80'
