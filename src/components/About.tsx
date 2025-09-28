@@ -57,17 +57,44 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <div className="space-y-4">
-              <p className="text-lg leading-relaxed professional-text enhanced-text">
-                Hello! I'm Debanjan, a passionate Senior Site Reliability Engineer at Signeasy with over 7 years
-                of experience building, automating, and scaling reliable cloud systems. Based in Bengaluru, I specialize
-                in cloud-native solutions, infrastructure automation, and operational excellence.
+            <div className="space-y-6">
+              <div className="relative">
+                <span className="float-left text-6xl font-serif text-golden mr-2 mt-1 leading-none">H</span>
+                <p className="text-lg leading-relaxed text-foreground font-serif">
+                  i, I'm Debanjan Das, a Senior Site Reliability Engineer (SRE) and DevOps Specialist with over 7 years of 
+                  experience building, automating, and scaling reliable cloud systems.
+                </p>
+              </div>
+
+              <div className="bg-muted/20 border-l-4 border-golden p-4 rounded-r-lg">
+                <p className="text-lg leading-relaxed text-foreground font-serif">
+                  I began my journey in technology with a B.Tech in Electrical and Electronics Engineering from VIT Vellore (2018), 
+                  and since then, I've worked with some of the world's leading organizations including{" "}
+                  <span className="font-semibold text-foreground">Capgemini, TCS, TransUnion, and now Signeasy</span>. 
+                  My career has been shaped around cloud-native solutions, infrastructure automation, monitoring, and cost optimization, 
+                  enabling businesses to run smoothly and efficiently.
+                </p>
+              </div>
+
+              <p className="text-lg leading-relaxed text-foreground font-serif">
+                I'm deeply passionate about automation and operational excellence — whether it's creating scalable architectures with{" "}
+                <span className="text-golden font-medium">Terraform, Ansible, and Kubernetes</span>, optimizing cloud infrastructure on{" "}
+                <span className="text-golden font-medium">AWS</span>, or designing CI/CD pipelines with{" "}
+                <span className="text-golden font-medium">Jenkins and ArgoCD</span>. I thrive on solving complex infrastructure challenges 
+                and ensuring systems are always resilient, secure, and cost-effective.
               </p>
 
-              <p className="text-lg leading-relaxed text-muted-foreground professional-text enhanced-text">
-                My journey in tech has taken me through leading organizations including Capgemini, TCS, TransUnion,
-                and now Signeasy. I thrive on solving complex infrastructure challenges, designing scalable
-                architectures with Terraform and Kubernetes, and ensuring systems are always resilient, secure, and cost-effective.
+              <div className="bg-muted/20 border-l-4 border-golden p-4 rounded-r-lg">
+                <p className="text-lg leading-relaxed text-foreground font-serif">
+                  Beyond traditional DevOps, I enjoy exploring AI-driven tools like{" "}
+                  <span className="font-semibold text-foreground">ChatGPT, Anthropix, Perplexity, and Cursor</span>, 
+                  integrating them into workflows to enhance productivity and innovation.
+                </p>
+              </div>
+
+              <p className="text-lg leading-relaxed text-muted-foreground font-serif italic">
+                When I'm not engineering systems, I'm constantly learning, experimenting with new technologies, 
+                and refining processes that make engineering teams more efficient and organizations more agile.
               </p>
             </div>
 
