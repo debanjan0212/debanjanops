@@ -12,6 +12,26 @@ export default function GlobalBackground() {
   const smoothMouseX = useSpring(mouseX, { damping: 50, stiffness: 300 })
   const smoothMouseY = useSpring(mouseY, { damping: 50, stiffness: 300 })
 
+  // Dynamically align section videos with page sections
+  const [sectionTops, setSectionTops] = useState<{ skills: number; services: number }>({ skills: 0, services: 0 })
+  useEffect(() => {
+    const update = () => {
+      const skillsEl = document.getElementById('skills')
+      const servicesEl = document.getElementById('services')
+      setSectionTops({
+        skills: skillsEl?.offsetTop ?? 0,
+        services: servicesEl?.offsetTop ?? 0,
+      })
+    }
+    update()
+    window.addEventListener('resize', update)
+    window.addEventListener('load', update)
+    return () => {
+      window.removeEventListener('resize', update)
+      window.removeEventListener('load', update)
+    }
+  }, [])
+
   useEffect(() => {
     let animationFrame: number
     const handleMouseMove = (e: MouseEvent) => {
@@ -87,7 +107,7 @@ export default function GlobalBackground() {
       </div>
 
       {/* Technical Skills Section - Custom Skills Video */}
-      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '200vh', opacity: 0.5 }}>
+      <div className="absolute w-full h-screen overflow-hidden" style={{ top: sectionTops.skills, opacity: 0.5 }}>
         <video
           autoPlay
           muted
@@ -102,7 +122,7 @@ export default function GlobalBackground() {
       </div>
 
       {/* My Services Section - Custom Services Video */}
-      <div className="absolute w-full h-screen overflow-hidden" style={{ top: '300vh', opacity: 0.5 }}>
+      <div className="absolute w-full h-screen overflow-hidden" style={{ top: sectionTops.services, opacity: 0.5 }}>
         <video
           autoPlay
           muted
