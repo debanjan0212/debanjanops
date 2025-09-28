@@ -48,7 +48,7 @@ export default function GlobalBackground() {
           </motion.div>
         )}
 
-        <div className="w-full h-full" style={{ opacity: 0.3, backgroundColor: 'transparent' }}>
+        <div className="w-full h-full" style={{ opacity: 0.6, backgroundColor: 'transparent' }}>
           <iframe
             src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
             frameBorder='0'
@@ -70,7 +70,7 @@ export default function GlobalBackground() {
         )}
       </div>
 
-      <div style={{ opacity: 0.05, position: 'relative', zIndex: 1 }}>
+      <div style={{ opacity: 0.15, position: 'relative', zIndex: 1 }}>
         <ProgrammableDevOpsLayer mouseX={smoothMouseX} mouseY={smoothMouseY} />
       </div>
     </div>
