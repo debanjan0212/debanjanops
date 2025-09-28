@@ -85,7 +85,7 @@ const Services = () => {
   }
 
   return (
-    <section id="services" className="py-8 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
+    <section id="services" className="py-6 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -94,17 +94,17 @@ const Services = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 professional-heading">
+          <h2 className="text-4xl md:text-5xl font-bold mb-3 professional-heading">
             My <span className="text-primary">Services</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto professional-text">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto professional-text">
             Comprehensive DevOps and infrastructure services to transform your technology stack
           </p>
         </motion.div>
 
         {/* Horizontal Stack Carousel - Centered & Fixed Height */}
         <div 
-          className="relative h-[450px] md:h-[500px] mb-12 overflow-hidden flex items-center justify-center"
+          className="relative h-[560px] md:h-[600px] mb-10 overflow-hidden flex items-center justify-center"
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
         >
@@ -156,8 +156,8 @@ const Services = () => {
                   }}
                   className="absolute flex items-center justify-center"
                   style={{ 
-                    width: '280px',
-                    height: '350px',
+                    width: '300px',
+                    height: '480px',
                   }}
                 >
                   <Card className={`p-4 md:p-6 w-full h-full transition-all duration-500 overflow-hidden ${
@@ -188,7 +188,7 @@ const Services = () => {
                               className="flex items-start text-xs text-muted-foreground leading-tight"
                             >
                               <div className="w-1.5 h-1.5 rounded-full bg-primary mr-2 flex-shrink-0 mt-1.5"></div>
-                              <span className="line-clamp-2">{feature}</span>
+                              <span>{feature}</span>
                             </motion.div>
                           ))}
                         </div>

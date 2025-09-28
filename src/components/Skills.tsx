@@ -21,11 +21,11 @@ const Skills = () => {
   const [selectedSkill, setSelectedSkill] = useState<any>(null)
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end 80%"]
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"])
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"])
 
   const skillCategories = [
     {
@@ -125,7 +125,7 @@ const Skills = () => {
   }
 
   return (
-    <section id="skills" className="py-8 px-4 relative z-10 overflow-hidden gpu-accelerated">
+    <section id="skills" className="py-4 px-4 relative z-10 overflow-hidden gpu-accelerated">
       {/* Parallax Background */}
       <motion.div
         style={{ y: backgroundY }}
@@ -140,7 +140,7 @@ const Skills = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-8"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 professional-heading">
             Technical <span className="text-primary">Skills</span>
@@ -151,7 +151,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Skills Categories */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
           {skillCategories.map((category, categoryIndex) => {
             const Icon = category.icon;
             
