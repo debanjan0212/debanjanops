@@ -509,20 +509,20 @@ const Hero = () => {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative flex justify-center lg:justify-end"
+              className="relative flex justify-center lg:justify-end items-center"
             >
-              {/* Clean portrait with natural pop-out and floating animation */}
+              {/* Clean portrait with natural pop-out and floating animation - Mobile Optimized */}
               <motion.img
                 src="https://i.postimg.cc/zGS3tZ3N/IMG-4625-removebg-preview.png"
                 alt="Debanjan Das - Professional Portrait"
-                className="w-80 h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-lg"
+                className="w-48 h-60 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-lg"
                 style={{
                   filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
                   background: 'transparent'
                 }}
                 animate={{
-                  y: [0, -15, 0],
-                  x: [0, 8, 0, -8, 0]
+                  y: [0, -10, 0],
+                  x: [0, 5, 0, -5, 0]
                 }}
                 transition={{
                   duration: 6,

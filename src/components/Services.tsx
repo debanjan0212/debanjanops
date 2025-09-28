@@ -85,7 +85,7 @@ const Services = () => {
   }
 
   return (
-    <section id="services" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
+    <section id="services" className="py-12 px-4 relative z-10 bg-background/80 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto">
         <motion.div
           ref={ref}
@@ -102,9 +102,9 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Horizontal Stack Carousel - Mobile Optimized */}
+        {/* Horizontal Stack Carousel - Centered */}
         <div 
-          className="relative h-[400px] md:h-[500px] mb-16 overflow-hidden"
+          className="relative h-[400px] md:h-[500px] mb-12 overflow-hidden flex items-center justify-center"
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
         >
@@ -130,17 +130,16 @@ const Services = () => {
             </Button>
           </div>
 
-          {/* Service Cards Horizontal Stack */}
-          <div className="relative w-full h-full flex items-center justify-center px-4">
+          {/* Service Cards Horizontal Stack - Centered */}
+          <div className="relative w-full h-full flex items-center justify-center">
             {services.map((service, index) => {
               const Icon = service.icon
               const isActive = index === currentIndex
               const isPrev = index === (currentIndex - 1 + services.length) % services.length
               const isNext = index === (currentIndex + 1) % services.length
               
-              // Mobile optimized spacing
-              const mobileSpacing = 200
-              const desktopSpacing = 280
+              // Centered spacing
+              const spacing = 300
               
               return (
                 <motion.div
@@ -149,19 +148,16 @@ const Services = () => {
                   animate={{ 
                     opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
                     scale: isActive ? 1 : 0.8,
-                    x: isActive ? 0 : isPrev ? -mobileSpacing : isNext ? mobileSpacing : 0
+                    x: isActive ? 0 : isPrev ? -spacing : isNext ? spacing : 0
                   }}
                   transition={{ 
                     duration: 0.5,
                     ease: [0.25, 0.46, 0.45, 0.94]
                   }}
-                  className="absolute inset-0 flex items-center justify-center"
+                  className="absolute flex items-center justify-center"
                   style={{ 
                     width: '280px',
                     height: '350px',
-                    left: '50%',
-                    top: '50%',
-                    transform: 'translate(-50%, -50%)'
                   }}
                 >
                   <Card className={`p-4 md:p-6 w-full h-full transition-all duration-500 ${

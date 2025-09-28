@@ -15,12 +15,14 @@ const Index = () => {
       <GlobalBackground />
       <Navigation />
       <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Services />
-      <Portfolio />
-      <Contact />
+      <div className="space-y-8">
+        <About />
+        <Experience />
+        <Skills />
+        <Services />
+        <Portfolio />
+        <Contact />
+      </div>
       <Footer />
     </div>
   );

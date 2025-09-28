@@ -39,7 +39,7 @@ export default function About() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.4, 1, 1, 0.4])
 
   return (
-    <section id="about" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm overflow-hidden">
+    <section id="about" className="py-12 px-4 relative z-10 bg-background/80 backdrop-blur-sm overflow-hidden">
       <motion.div 
         style={{ y, opacity }} 
         className="max-w-6xl mx-auto"
