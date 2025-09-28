@@ -35,6 +35,7 @@ export default function GlobalBackground() {
 
   return (
     <div ref={canvasRef} className="fixed inset-0 w-full h-full z-0 pointer-events-none">
+      {/* Primary 3D Layer - Hero Section */}
       <div className="absolute inset-0 w-full h-full">
         {isLoading && (
           <motion.div className="absolute inset-0 w-full h-full bg-gradient-to-br from-amber-950/20 via-background to-orange-900/10 flex items-center justify-center z-10"
@@ -55,7 +56,7 @@ export default function GlobalBackground() {
             width='100%'
             height='100%'
             style={{ border: 'none' }}
-            title="Immersive 3D Animation"
+            title="Primary 3D Animation"
             onLoad={handleLoad}
             onError={handleError}
           />
@@ -68,6 +69,51 @@ export default function GlobalBackground() {
             </div>
           </motion.div>
         )}
+      </div>
+
+      {/* Extended 3D Layers - Replicated for continuous effect */}
+      <div className="absolute top-full w-full h-screen" style={{ opacity: 0.6 }}>
+        <iframe
+          src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
+          frameBorder='0'
+          width='100%'
+          height='100%'
+          style={{ border: 'none', transform: 'rotateY(180deg)' }}
+          title="Extended 3D Animation 1"
+        />
+      </div>
+
+      <div className="absolute w-full h-screen" style={{ top: '200vh', opacity: 0.5 }}>
+        <iframe
+          src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
+          frameBorder='0'
+          width='100%'
+          height='100%'
+          style={{ border: 'none', transform: 'scale(1.2)' }}
+          title="Extended 3D Animation 2"
+        />
+      </div>
+
+      <div className="absolute w-full h-screen" style={{ top: '300vh', opacity: 0.4 }}>
+        <iframe
+          src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
+          frameBorder='0'
+          width='100%'
+          height='100%'
+          style={{ border: 'none', transform: 'rotateX(10deg)' }}
+          title="Extended 3D Animation 3"
+        />
+      </div>
+
+      <div className="absolute w-full h-screen" style={{ top: '400vh', opacity: 0.3 }}>
+        <iframe
+          src='https://my.spline.design/projectpromolookatmouse-ddlyf0zWizL0p3CxWVOAfFxt/'
+          frameBorder='0'
+          width='100%'
+          height='100%'
+          style={{ border: 'none', transform: 'rotateZ(5deg) scale(0.9)' }}
+          title="Extended 3D Animation 4"
+        />
       </div>
 
       <div style={{ opacity: 0.25, position: 'relative', zIndex: 1 }}>
