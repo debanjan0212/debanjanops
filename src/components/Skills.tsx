@@ -24,7 +24,8 @@ const Skills = () => {
     offset: ["start end", "end start"]
   })
   
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"])
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"])
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"])
 
   const skillCategories = [
     {
@@ -108,10 +109,15 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 relative z-10 bg-background/80 backdrop-blur-sm overflow-hidden">
+    <section id="skills" className="py-20 px-4 relative z-10 overflow-hidden">
+      {/* Parallax Background */}
+      <motion.div
+        style={{ y: backgroundY }}
+        className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 -z-10"
+      />
       <motion.div 
         style={{ y }} 
-        className="max-w-7xl mx-auto"
+        className="max-w-7xl mx-auto relative z-10"
       >
         <motion.div
           ref={ref}
