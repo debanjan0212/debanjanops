@@ -1,136 +1,145 @@
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { 
-  Settings, 
   Cloud, 
-  Shield, 
-  Zap, 
-  Database, 
-  GitBranch,
-  ArrowRight
-} from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+  Settings, 
+  Shield,
+  Server,
+  Database,
+  Monitor
+} from "lucide-react"
 
 const Services = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+
   const services = [
     {
-      icon: <Settings className="w-8 h-8" />,
-      title: "DevOps Engineering",
-      description: "End-to-end DevOps solutions including automation, CI/CD pipeline design, and Infrastructure as Code implementation.",
-      features: ["CI/CD Pipeline Setup", "Automation Scripts", "Infrastructure as Code", "Process Optimization"],
-      gradient: "from-golden to-golden-dark"
+      icon: Cloud,
+      title: "Cloud Infrastructure",
+      description: "Design and implement scalable cloud infrastructure on AWS, Azure, and GCP with best practices for security and cost optimization.",
+      features: ["Multi-cloud architecture", "Cost optimization", "Scalability planning", "Security implementation"]
     },
     {
-      icon: <Database className="w-8 h-8" />,
+      icon: Settings,
+      title: "DevOps Automation",
+      description: "Streamline your development workflow with CI/CD pipelines, automated testing, and infrastructure as code.",
+      features: ["CI/CD pipeline setup", "Automation frameworks", "Process optimization", "Tool integration"]
+    },
+    {
+      icon: Shield,
       title: "Site Reliability Engineering",
-      description: "Comprehensive SRE services focusing on system reliability, monitoring, incident management, and scalability.",
-      features: ["System Monitoring", "Incident Management", "Performance Optimization", "Reliability Engineering"],
-      gradient: "from-coffee-medium to-coffee-light"
-    },
-    {
-      icon: <Cloud className="w-8 h-8" />,
-      title: "Cloud Optimization & Security",
-      description: "Cloud infrastructure optimization, security implementation, and cost management across AWS platforms.",
-      features: ["AWS Architecture", "Cost Optimization", "Security Implementation", "Migration Services"],
-      gradient: "from-coffee-light to-beige-medium"
+      description: "Ensure your systems are reliable, available, and performant with comprehensive monitoring and incident response.",
+      features: ["System monitoring", "Incident response", "Performance optimization", "Reliability engineering"]
     }
   ];
 
   const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
-    <section id="services" className="py-20 bg-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-coffee-dark mb-6">
-            Professional Services
+    <section id="services" className="py-20 px-4 relative z-10 bg-white">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 professional-heading">
+            My <span className="text-primary">Services</span>
           </h2>
-          <p className="text-xl text-coffee-light max-w-3xl mx-auto">
-            Comprehensive DevOps and SRE solutions to transform your infrastructure and operations
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto professional-text">
+            Comprehensive DevOps and infrastructure services to transform your technology stack
           </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {services.map((service, index) => {
+            const Icon = service.icon
+            return (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                <Card className="p-8 h-full hover-elevate transition-all duration-300">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-6">
+                    <Icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4 professional-heading">{service.title}</h3>
+                  <p className="text-muted-foreground mb-6 professional-text leading-relaxed">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mr-3"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button variant="outline" size="sm" onClick={scrollToContact} className="w-full">
+                    Learn More
+                  </Button>
+                </Card>
+              </motion.div>
+            )
+          })}
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <Card 
-              key={index}
-              className="gradient-card border-0 shadow-medium hover:shadow-strong transition-smooth hover:-translate-y-2 animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
-              <CardContent className="p-8">
-                <div className={`w-16 h-16 rounded-lg bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 text-warm-white`}>
-                  {service.icon}
-                </div>
-                
-                <h3 className="text-2xl font-bold text-coffee-dark mb-4">
-                  {service.title}
-                </h3>
-                
-                <p className="text-coffee-medium leading-relaxed mb-6">
-                  {service.description}
-                </p>
-                
-                <div className="space-y-3 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center">
-                      <div className="w-2 h-2 bg-golden rounded-full mr-3"></div>
-                      <span className="text-coffee-medium font-medium">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <Button 
-                  onClick={scrollToContact}
-                  variant="outline"
-                  className="w-full border-golden text-golden hover:bg-golden hover:text-coffee-dark transition-bounce"
-                >
-                  Learn More
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        {/* Enhanced Features Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="grid md:grid-cols-3 gap-6 mb-12"
+        >
+          <Card className="p-6 text-center hover-elevate transition-all duration-300">
+            <Server className="h-8 w-8 text-primary mx-auto mb-3" />
+            <h3 className="text-lg font-semibold mb-2">Infrastructure as Code</h3>
+            <p className="text-muted-foreground text-sm professional-text">
+              Terraform and Ansible expertise for reproducible infrastructure
+            </p>
+          </Card>
+          <Card className="p-6 text-center hover-elevate transition-all duration-300">
+            <Database className="h-8 w-8 text-primary mx-auto mb-3" />
+            <h3 className="text-lg font-semibold mb-2">Container Orchestration</h3>
+            <p className="text-muted-foreground text-sm professional-text">
+              Kubernetes and Docker solutions for scalable applications
+            </p>
+          </Card>
+          <Card className="p-6 text-center hover-elevate transition-all duration-300">
+            <Monitor className="h-8 w-8 text-primary mx-auto mb-3" />
+            <h3 className="text-lg font-semibold mb-2">Monitoring & Alerting</h3>
+            <p className="text-muted-foreground text-sm professional-text">
+              Comprehensive monitoring with ELK Stack and Prometheus
+            </p>
+          </Card>
+        </motion.div>
 
-        {/* Additional Service Highlights */}
-        <div className="bg-gradient-to-r from-coffee-dark to-coffee-medium rounded-2xl p-8 md:p-12 text-center">
-          <h3 className="text-3xl font-bold text-warm-white mb-4">
-            Ready to Transform Your Infrastructure?
-          </h3>
-          <p className="text-xl text-beige-light mb-8 max-w-3xl mx-auto">
-            Let's discuss how modern DevOps practices and SRE principles can enhance your system reliability, 
-            reduce operational overhead, and accelerate your development velocity.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              onClick={scrollToContact}
-              className="bg-golden hover:bg-golden-dark text-coffee-dark px-8 py-3 text-lg font-semibold rounded-lg transition-bounce"
-            >
-              Start a Conversation
-              <ArrowRight className="ml-2 w-5 h-5" />
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="text-center"
+        >
+          <Card className="p-8 bg-gradient-to-r from-primary/5 to-purple-500/5 border-primary/20">
+            <h3 className="text-2xl font-bold mb-4 professional-heading">Start a Conversation</h3>
+            <p className="text-muted-foreground mb-6 professional-text max-w-2xl mx-auto">
+              Ready to optimize your infrastructure and streamline your DevOps processes? Let's discuss your project requirements.
+            </p>
+            <Button size="lg" onClick={scrollToContact} className="bg-primary hover:bg-primary/90">
+              Get Started
             </Button>
-            
-            <div className="flex items-center space-x-6 text-beige-light">
-              <div className="flex items-center">
-                <Shield className="w-5 h-5 mr-2" />
-                <span>Secure Solutions</span>
-              </div>
-              <div className="flex items-center">
-                <Zap className="w-5 h-5 mr-2" />
-                <span>Fast Implementation</span>
-              </div>
-              <div className="flex items-center">
-                <GitBranch className="w-5 h-5 mr-2" />
-                <span>Best Practices</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          </Card>
+        </motion.div>
       </div>
     </section>
   );

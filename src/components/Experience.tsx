@@ -1,7 +1,13 @@
-import { Briefcase, Calendar, MapPin } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+import { Card } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Calendar, MapPin, Briefcase } from "lucide-react"
 
 const Experience = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+
   const experiences = [
     {
       company: "Signeasy",
@@ -35,93 +41,62 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-br from-coffee-dark via-coffee-medium to-coffee-light relative overflow-hidden">
-      {/* Elegant Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `
-            radial-gradient(circle at 20% 20%, hsl(var(--golden) / 0.1) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, hsl(var(--golden) / 0.08) 0%, transparent 50%),
-            linear-gradient(135deg, transparent 0%, hsl(var(--beige-light) / 0.03) 50%, transparent 100%)
-          `
-        }}></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
-            Professional Experience
+    <section id="experience" className="py-20 px-4 relative z-10 bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 professional-heading">
+            Professional <span className="text-primary">Experience</span>
           </h2>
-          <p className="text-xl text-beige-light max-w-3xl mx-auto">
-            A journey through leading organizations, building expertise in cloud infrastructure and DevOps
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto professional-text">
+            A journey through leading technology organizations
           </p>
-        </div>
+        </motion.div>
 
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-golden via-accent to-golden transform md:-translate-x-0.5"></div>
-
-          <div className="space-y-12">
-            {experiences.map((exp, index) => (
-              <div 
-                key={index}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } animate-fade-in`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-gradient-to-br from-golden to-accent rounded-full border-4 border-coffee-dark transform -translate-x-2 md:-translate-x-2 z-10 shadow-glow">
-                  {exp.isActive && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-golden to-accent rounded-full animate-ping"></div>
-                  )}
+        <div className="space-y-8">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={exp.company}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+            >
+              <Card className={`p-6 hover-elevate transition-all duration-300 ${exp.isActive ? 'border-primary bg-primary/5' : ''}`}>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Briefcase className="h-5 w-5 text-primary" />
+                      <h3 className="text-xl font-semibold">{exp.role}</h3>
+                      {exp.isActive && (
+                        <Badge variant="default" className="bg-primary text-primary-foreground">
+                          Current
+                        </Badge>
+                      )}
+                    </div>
+                    <h4 className="text-lg font-medium text-primary mb-2">{exp.company}</h4>
+                    <p className="text-muted-foreground leading-relaxed professional-text">
+                      {exp.description}
+                    </p>
+                  </div>
+                  <div className="md:text-right md:min-w-[200px]">
+                    <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm">{exp.period}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <MapPin className="h-4 w-4" />
+                      <span className="text-sm">{exp.location}</span>
+                    </div>
+                  </div>
                 </div>
-
-                {/* Content Card */}
-                <div className={`w-full md:w-5/12 ml-16 md:ml-0 ${
-                  index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                }`}>
-                  <Card className={`bg-coffee-medium/80 backdrop-blur-md border border-beige-medium/30 shadow-2xl hover:shadow-glow transition-smooth ${
-                    exp.isActive ? 'ring-2 ring-golden/50' : ''
-                  }`}>
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex-1">
-                          <h3 className="text-xl font-bold text-cream mb-1">
-                            {exp.role}
-                          </h3>
-                          <div className="flex items-center text-golden font-semibold mb-2">
-                            <Briefcase className="w-4 h-4 mr-2" />
-                            {exp.company}
-                            {exp.isActive && (
-                              <span className="ml-2 bg-gradient-to-r from-golden to-accent text-coffee-dark px-2 py-1 rounded-full text-xs">
-                                Current
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-2 mb-4">
-                        <div className="flex items-center text-beige-light">
-                          <Calendar className="w-4 h-4 mr-2" />
-                          {exp.period}
-                        </div>
-                        <div className="flex items-center text-beige-light">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          {exp.location}
-                        </div>
-                      </div>
-
-                      <p className="text-beige-medium leading-relaxed">
-                        {exp.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            ))}
-          </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

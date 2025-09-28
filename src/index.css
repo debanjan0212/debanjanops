@@ -2,151 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0,0,0, .10);
+  --badge-outline: rgba(0,0,0, .05);
 
-@layer base {
-  :root {
-    --button-outline: rgba(0,0,0, .10);
-    --badge-outline: rgba(0,0,0, .05);
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
 
-    /* Automatic computation of border around primary / danger buttons */
-    --opaque-button-border-intensity: -8; /* In terms of percentages */
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0,0,0, .03);
+  --elevate-2: rgba(0,0,0, .08);
 
-    /* Backgrounds applied on top of other backgrounds when hovered/active */
-    --elevate-1: rgba(0,0,0, .03);
-    --elevate-2: rgba(0,0,0, .08);
+  --background: 35 15% 97%;
+  --foreground: 25 15% 15%;
+  --border: 30 20% 82%;
+  --card: 35 20% 95%;
+  --card-foreground: 25 15% 15%;
+  --card-border: 30 25% 88%;
+  --popover: 30 25% 88%;
+  --popover-foreground: 25 15% 15%;
+  --popover-border: 30 20% 78%;
+  --primary: 25 60% 45%;
+  --primary-foreground: 35 20% 95%;
+  --secondary: 30 25% 80%;
+  --secondary-foreground: 25 15% 15%;
+  --muted: 30 20% 85%;
+  --muted-foreground: 25 15% 40%;
+  --accent: 30 20% 83%;
+  --accent-foreground: 25 15% 15%;
+  --destructive: 0 70% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --input: 30 20% 78%;
+  --ring: 25 60% 45%;
+  --chart-1: 25 60% 45%;
+  --chart-2: 30 50% 40%;
+  --chart-3: 35 45% 35%;
+  --chart-4: 20 55% 50%;
+  --chart-5: 15 65% 55%;
 
-    --background: 35 15% 97%;
-    --foreground: 25 15% 15%;
-    --border: 30 20% 82%;
-    --card: 35 20% 95%;
-    --card-foreground: 25 15% 15%;
-    --card-border: 30 25% 88%;
-    --popover: 30 25% 88%;
-    --popover-foreground: 25 15% 15%;
-    --popover-border: 30 20% 78%;
-    --primary: 25 60% 45%;
-    --primary-foreground: 35 20% 95%;
-    --secondary: 30 25% 80%;
-    --secondary-foreground: 25 15% 15%;
-    --muted: 30 20% 85%;
-    --muted-foreground: 25 15% 40%;
-    --accent: 30 20% 83%;
-    --accent-foreground: 25 15% 15%;
+  --font-sans: Inter, Open Sans, sans-serif;
+  --font-serif: Georgia, serif;
+  --radius: 0.5rem;
+}
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 42 33% 97%;
+.dark {
+  --button-outline: rgba(255,255,255, .10);
+  --badge-outline: rgba(255,255,255, .05);
+  --opaque-button-border-intensity: 9;  /* In terms of percentages */
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255,255,255, .04);
+  --elevate-2: rgba(255,255,255, .09);
 
-    --border: 35 15% 85%;
-    --input: 35 15% 85%;
-    --ring: 38 90% 65%;
-
-    /* Custom Portfolio Colors */
-    --coffee-dark: 20 25% 15%;
-    --coffee-medium: 25 31% 24%;
-    --coffee-light: 30 20% 35%;
-    --beige-light: 40 25% 88%;
-    --beige-medium: 35 25% 82%;
-    --beige-dark: 35 20% 78%;
-    --cream: 42 33% 94%;
-    --warm-white: 42 33% 97%;
-    --golden: 38 90% 65%;
-    --golden-dark: 35 75% 55%;
-
-    /* Modern AI Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--coffee-dark)), hsl(var(--coffee-medium)), hsl(20 30% 20%));
-    --gradient-card: linear-gradient(145deg, hsl(var(--warm-white)), hsl(var(--cream)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--golden)), hsl(var(--golden-dark)));
-    --gradient-mesh: radial-gradient(ellipse at top, hsl(var(--golden) / 0.1), transparent 50%), 
-                     radial-gradient(ellipse at bottom right, hsl(var(--accent) / 0.08), transparent 50%),
-                     radial-gradient(ellipse at bottom left, hsl(var(--primary) / 0.05), transparent 50%);
-    --gradient-glow: radial-gradient(circle at center, hsl(var(--golden) / 0.3), transparent 70%);
-    --gradient-glass: linear-gradient(135deg, hsl(var(--warm-white) / 0.1), hsl(var(--cream) / 0.05));
-
-    /* Modern Shadows & Glows */
-    --shadow-soft: 0 4px 20px -2px hsl(var(--coffee-light) / 0.1);
-    --shadow-medium: 0 8px 30px -4px hsl(var(--coffee-medium) / 0.15);
-    --shadow-strong: 0 12px 40px -8px hsl(var(--coffee-dark) / 0.2);
-    --shadow-glow: 0 0 40px hsl(var(--golden) / 0.3);
-    --shadow-neon: 0 0 20px hsl(var(--accent) / 0.4), 0 0 40px hsl(var(--accent) / 0.2);
-    --shadow-float: 0 20px 60px -20px hsl(var(--coffee-dark) / 0.3);
-
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --button-outline: rgba(255,255,255, .10);
-    --badge-outline: rgba(255,255,255, .05);
-    --opaque-button-border-intensity: 9;  /* In terms of percentages */
-    /* Backgrounds applied on top of other backgrounds when hovered/active */
-    --elevate-1: rgba(255,255,255, .04);
-    --elevate-2: rgba(255,255,255, .09);
-
-    --background: 25 15% 8%;
-    --foreground: 35 20% 92%;
-    --border: 25 15% 18%;
-    --card: 25 15% 12%;
-    --card-foreground: 35 20% 92%;
-    --card-border: 25 15% 20%;
-    --popover: 25 15% 18%;
-    --popover-foreground: 35 20% 92%;
-    --popover-border: 25 15% 25%;
-    --primary: 30 65% 65%;
-    --primary-foreground: 25 15% 8%;
-    --secondary: 25 15% 25%;
-    --secondary-foreground: 35 20% 92%;
-    --muted: 25 10% 20%;
-    --muted-foreground: 30 15% 65%;
-    --accent: 25 10% 22%;
-    --accent-foreground: 35 20% 92%;
-
-    --destructive: 0 62.8% 50%;
-    --destructive-foreground: 42 33% 97%;
-
-    --border: 25 15% 20%;
-    --input: 25 15% 20%;
-    --ring: 38 90% 65%;
-
-    --coffee-dark: 20 25% 8%;
-    --coffee-medium: 25 20% 15%;
-    --coffee-light: 30 15% 25%;
-    --beige-light: 35 15% 25%;
-    --beige-medium: 30 15% 20%;
-    --cream: 25 15% 15%;
-    --warm-white: 20 25% 12%;
-    --golden: 38 90% 65%;
-    --golden-dark: 35 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  --background: 25 15% 8%;
+  --foreground: 35 20% 92%;
+  --border: 25 15% 18%;
+  --card: 25 15% 12%;
+  --card-foreground: 35 20% 92%;
+  --card-border: 25 15% 20%;
+  --popover: 25 15% 18%;
+  --popover-foreground: 35 20% 92%;
+  --popover-border: 25 15% 25%;
+  --primary: 30 65% 65%;
+  --primary-foreground: 25 15% 8%;
+  --secondary: 25 15% 25%;
+  --secondary-foreground: 35 20% 92%;
+  --muted: 25 10% 20%;
+  --muted-foreground: 30 15% 65%;
+  --accent: 25 10% 22%;
+  --accent-foreground: 35 20% 92%;
+  --destructive: 0 70% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --input: 25 15% 28%;
+  --ring: 30 65% 65%;
+  --chart-1: 30 65% 65%;
+  --chart-2: 25 50% 55%;
+  --chart-3: 35 45% 50%;
+  --chart-4: 20 55% 60%;
+  --chart-5: 15 65% 70%;
 }
 
 @layer base {
@@ -193,175 +126,18 @@ All colors MUST be HSL.
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
-  
-  .shadow-soft {
-    box-shadow: var(--shadow-soft);
-  }
-  
-  .shadow-medium {
-    box-shadow: var(--shadow-medium);
-  }
-  
-  .shadow-strong {
-    box-shadow: var(--shadow-strong);
+
+  /* DevOps Infrastructure Grid Animation */
+  .devops-grid {
+    background-image:
+      linear-gradient(rgba(255, 193, 7, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 193, 7, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: gridMove 15s linear infinite;
   }
 
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
+  @keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 30px 30px; }
   }
-
-  .shadow-neon {
-    box-shadow: var(--shadow-neon);
-  }
-
-  .shadow-float {
-    box-shadow: var(--shadow-float);
-  }
-  
-  .transition-smooth {
-    transition: var(--transition-smooth);
-  }
-  
-  .transition-bounce {
-    transition: var(--transition-bounce);
-  }
-
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .text-gradient {
-    background: linear-gradient(135deg, hsl(var(--golden)), hsl(var(--accent)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .floating-element {
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* DevOps Animation Keyframes */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-  }
-
-  @keyframes float-reverse {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(20px) rotate(-5deg); }
-  }
-
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-  }
-
-  @keyframes spin-slow {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  @keyframes glow {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
-  }
-
-  /* Animation Classes */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-float-reverse {
-    animation: float-reverse 8s ease-in-out infinite;
-  }
-
-  .animate-pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
-  }
-
-  .animate-spin-slow {
-    animation: spin-slow 20s linear infinite;
-  }
-
-  .animate-glow {
-    animation: glow 4s ease-in-out infinite;
-  }
-
-  /* Hexagonal DevOps Animations */
-  .hexagon-container {
-    position: relative;
-    width: 60px;
-    height: 60px;
-  }
-
-  .hexagon {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-  }
-
-  .hexagon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
-  }
-
-  @keyframes float-hex-1 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(5deg); }
-  }
-
-  @keyframes float-hex-2 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(20px) rotate(-8deg); }
-  }
-
-  @keyframes float-hex-3 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(6deg); }
-  }
-
-  @keyframes float-hex-4 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(18px) rotate(-4deg); }
-  }
-
-  @keyframes float-hex-5 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(7deg); }
-  }
-
-  @keyframes float-hex-6 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(14px) rotate(-6deg); }
-  }
-
-  @keyframes float-hex-7 {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-16px) rotate(5deg); }
-  }
-
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
-  }
-
-  .animate-float-hex-1 { animation: float-hex-1 8s ease-in-out infinite; }
-  .animate-float-hex-2 { animation: float-hex-2 10s ease-in-out infinite; }
-  .animate-float-hex-3 { animation: float-hex-3 7s ease-in-out infinite; }
-  .animate-float-hex-4 { animation: float-hex-4 9s ease-in-out infinite; }
-  .animate-float-hex-5 { animation: float-hex-5 11s ease-in-out infinite; }
-  .animate-float-hex-6 { animation: float-hex-6 6s ease-in-out infinite; }
-  .animate-float-hex-7 { animation: float-hex-7 12s ease-in-out infinite; }
-  .animate-pulse-slow { animation: pulse-slow 4s ease-in-out infinite; }
 }

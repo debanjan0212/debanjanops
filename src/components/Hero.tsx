@@ -1,150 +1,194 @@
-import { ArrowRight, Download, Code, Cloud, Settings, Terminal, Cpu, Zap } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-bg.jpg';
-import profilePhoto from '@/assets/debanjan-profile.jpg';
+import React from 'react'
+import { motion } from "framer-motion"
+import { ChevronDown, Github, Linkedin, Mail, MapPin, FolderOpen } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
-const Hero = () => {
+export default function Hero() {
+  const scrollToAbout = () => {
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
+  }
+
   const scrollToPortfolio = () => {
-    const element = document.querySelector('#portfolio');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+    document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
-    <section 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden gradient-mesh"
-      style={{
-        backgroundImage: `linear-gradient(rgba(20, 15, 8, 0.85), rgba(25, 18, 12, 0.7)), url(${heroImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
-      {/* Floating Elements */}
-      <div className="floating-element top-20 left-10 w-16 h-16 glass-effect rounded-xl animate-float hidden lg:block">
-        <div className="w-full h-full flex items-center justify-center">
-          <Code className="w-8 h-8 text-golden animate-glow" />
-        </div>
-      </div>
+    <section id="home" className="relative min-h-screen overflow-hidden bg-black">
       
-      <div className="floating-element top-40 right-20 w-20 h-20 glass-effect rounded-xl animate-float-reverse hidden lg:block">
-        <div className="w-full h-full flex items-center justify-center">
-          <Cloud className="w-10 h-10 text-accent animate-pulse-glow" />
-        </div>
-      </div>
+      {/* Content Layer - Split Layout Design */}
+      <div className="relative z-20 min-h-screen flex items-center">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen py-20">
 
-      <div className="floating-element bottom-40 left-20 w-14 h-14 glass-effect rounded-xl animate-float hidden lg:block">
-        <div className="w-full h-full flex items-center justify-center">
-          <Terminal className="w-7 h-7 text-golden animate-glow" />
-        </div>
-      </div>
-
-      <div className="floating-element top-60 right-10 w-18 h-18 glass-effect rounded-xl animate-float-reverse hidden lg:block">
-        <div className="w-full h-full flex items-center justify-center">
-          <Settings className="w-9 h-9 text-accent animate-spin-slow" />
-        </div>
-      </div>
-
-      {/* Background Glow Effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 gradient-glow rounded-full blur-3xl opacity-20 animate-pulse-glow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 gradient-glow rounded-full blur-3xl opacity-15 animate-glow"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
-        <div className="animate-fade-in">
-          {/* Profile Photo with Enhanced Design */}
-          <div className="mb-8 flex justify-center relative">
-            <div className="relative">
-              {/* Glow Ring */}
-              <div className="absolute inset-0 w-40 h-48 md:w-48 md:h-56 rounded-3xl shadow-neon animate-pulse-glow"></div>
-              
-              {/* Profile Photo */}
-              <div className="w-40 h-48 md:w-48 md:h-56 rounded-3xl overflow-hidden border-4 border-golden shadow-float animate-float relative z-10">
-                <img 
-                  src="https://i.postimg.cc/DfqWFVx3/Gemini-Generated-Image-kjzignkjzignkjzi.png" 
-                  alt="Debanjan Das - Senior Site Reliability Engineer"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Floating Tech Icons */}
-              <div className="absolute -top-2 -right-2 w-8 h-8 glass-effect rounded-lg animate-float hidden md:flex items-center justify-center">
-                <Cpu className="w-4 h-4 text-golden" />
-              </div>
-              <div className="absolute -bottom-2 -left-2 w-8 h-8 glass-effect rounded-lg animate-float-reverse hidden md:flex items-center justify-center">
-                <Zap className="w-4 h-4 text-accent" />
-              </div>
-            </div>
-          </div>
-
-          {/* Enhanced Hero Content */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-warm-white mb-6">
-            <span className="block">Debanjan Das</span>
-            <span className="block text-gradient text-2xl md:text-3xl lg:text-4xl font-medium mt-2">
-              Senior Site Reliability Engineer
-            </span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-beige-light mb-8 max-w-3xl mx-auto leading-relaxed">
-            Cloud & DevOps Specialist | 7+ Years in Automation & Infrastructure Reliability
-          </p>
-          
-          <div className="mb-12">
-            <p className="text-lg text-cream max-w-2xl mx-auto">
-              Transforming infrastructure challenges into scalable, automated solutions. 
-              Passionate about building resilient systems that power innovation.
-            </p>
-          </div>
-
-          {/* Enhanced CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              onClick={scrollToPortfolio}
-              className="bg-golden hover:bg-golden-dark text-coffee-dark px-8 py-3 text-lg font-semibold rounded-lg transition-bounce shadow-glow hover:shadow-neon group"
+            {/* Left Side - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
             >
-              View My Work
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            
-            <div className="glass-effect border-2 border-golden/50 text-golden/70 px-8 py-3 text-lg font-semibold rounded-lg cursor-not-allowed">
-              <div className="flex flex-col items-center gap-1">
-                <div className="flex items-center gap-2">
-                  <Download className="w-5 h-5" />
-                  📄 Resume Download - Coming Soon
-                </div>
-                <p className="text-sm text-cream/60 font-normal">
-                  Complete resume with detailed project information will be available for download shortly.
+
+              {/* Main Content */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                <h1 className="text-4xl lg:text-6xl font-bold mb-4 leading-tight">
+                  <span className="text-white">Debanjan Das</span>
+                </h1>
+
+                <h2 className="text-xl lg:text-2xl font-medium mb-2 text-gray-300">
+                  DevOps Engineer
+                </h2>
+
+                <h3 className="text-2xl lg:text-3xl font-semibold mb-6 leading-tight">
+                  <span className="text-white">Transforming Ideas Into </span>
+                  <span className="text-red-500">Digital Reality</span>
+                </h3>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="mb-8"
+              >
+                <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
+                  Senior Site Reliability Engineer with 7+ years transforming infrastructure challenges into scalable, automated solutions. Building resilient systems that power innovation at <span className="text-primary font-semibold">Signeasy</span>.
                 </p>
-              </div>
-            </div>
-          </div>
 
-          {/* Modern Stats Cards */}
-          <div className="flex flex-wrap justify-center gap-4 mt-16">
-            <div className="glass-effect rounded-xl p-4 min-w-[120px] animate-fade-in">
-              <div className="text-2xl font-bold text-gradient">7+</div>
-              <div className="text-sm text-cream">Years Experience</div>
-            </div>
-            <div className="glass-effect rounded-xl p-4 min-w-[120px] animate-fade-in">
-              <div className="text-2xl font-bold text-gradient">50+</div>
-              <div className="text-sm text-cream">Projects Delivered</div>
-            </div>
-            <div className="glass-effect rounded-xl p-4 min-w-[120px] animate-fade-in">
-              <div className="text-2xl font-bold text-gradient">99.9%</div>
-              <div className="text-sm text-cream">Uptime Achieved</div>
-            </div>
+                <div className="flex items-center gap-2 text-gray-400 mt-4">
+                  <MapPin className="h-4 w-4" />
+                  <span>Bengaluru, India</span>
+                </div>
+              </motion.div>
+
+              {/* Social Links */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="flex items-center gap-4 mb-8"
+              >
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="rounded-full bg-white/10 hover:bg-white/20 border border-white/20"
+                  data-testid="button-github"
+                >
+                  <Github className="h-5 w-5 text-white" />
+                </Button>
+                <a 
+                  href="https://www.linkedin.com/in/debanjan0212/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full bg-white/10 hover:bg-white/20 border border-white/20"
+                    data-testid="button-linkedin"
+                  >
+                    <Linkedin className="h-5 w-5 text-white" />
+                  </Button>
+                </a>
+                <a href="mailto:itsdebanjandas@gmail.com">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full bg-white/10 hover:bg-white/20 border border-white/20"
+                    data-testid="button-email"
+                  >
+                    <Mail className="h-5 w-5 text-white" />
+                  </Button>
+                </a>
+              </motion.div>
+
+              {/* Call to Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Button
+                  size="lg"
+                  onClick={scrollToPortfolio}
+                  className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white px-8 py-3 text-lg font-semibold shadow-xl transition-all duration-300"
+                  data-testid="button-projects"
+                >
+                  <FolderOpen className="w-5 h-5 mr-2" />
+                  MY PROJECTS
+                </Button>
+
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="px-8 py-3 text-lg border-2 border-white/30 text-white hover:bg-white/10 transition-all duration-300"
+                  onClick={scrollToAbout}
+                  data-testid="button-about"
+                >
+                  Learn More
+                </Button>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Side - Professional Portrait */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative flex justify-center lg:justify-end"
+            >
+              {/* Clean portrait with natural pop-out and floating animation */}
+              <motion.img
+                src="https://i.postimg.cc/DfqWFVx3/Gemini-Generated-Image-kjzignkjzignkjzi.png"
+                alt="Debanjan Das - Professional Portrait"
+                className="w-80 h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-lg"
+                style={{
+                  filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
+                  background: 'transparent'
+                }}
+                animate={{
+                  y: [0, -15, 0],
+                  x: [0, 8, 0, -8, 0]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                data-testid="img-professional-portrait"
+              />
+            </motion.div>
+
           </div>
         </div>
 
-        {/* Enhanced Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="glass-effect w-8 h-12 rounded-full flex justify-center animate-bounce">
-            <div className="w-1 h-4 bg-golden rounded-full mt-3 animate-pulse"></div>
-          </div>
-        </div>
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30"
+        >
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={scrollToAbout}
+            className="text-white/90 hover:text-white transition-colors backdrop-blur-sm bg-black/10 border border-white/10"
+            data-testid="button-scroll-about"
+          >
+            <motion.div
+              animate={{ y: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <ChevronDown className="w-5 h-5" />
+            </motion.div>
+          </Button>
+        </motion.div>
       </div>
     </section>
-  );
-};
-
-export default Hero;
+  )
+}
