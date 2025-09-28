@@ -102,9 +102,9 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Stack Carousel with Fading Effect */}
+        {/* Horizontal Stack Carousel */}
         <div 
-          className="relative h-[600px] md:h-[550px] mb-16 perspective-1000"
+          className="relative h-[500px] mb-16 overflow-hidden"
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
         >
@@ -114,9 +114,9 @@ const Services = () => {
               variant="outline"
               size="icon"
               onClick={prevService}
-              className="h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
+              className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft className="h-5 w-5" />
             </Button>
           </div>
           <div className="absolute top-1/2 -translate-y-1/2 right-4 z-30">
@@ -124,114 +124,125 @@ const Services = () => {
               variant="outline"
               size="icon"
               onClick={nextService}
-              className="h-12 w-12 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
+              className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm border-primary/20 hover:bg-primary/10"
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
 
-          {/* Service Cards Stack */}
-          <div className="relative w-full h-full max-w-4xl mx-auto">
-            <AnimatePresence mode="wait">
-              {services.map((service, index) => {
-                const Icon = service.icon
-                const isActive = index === currentIndex
-                const isPrev = index === (currentIndex - 1 + services.length) % services.length
-                const isNext = index === (currentIndex + 1) % services.length
-                
-                if (!isActive && !isPrev && !isNext) return null
+          {/* Service Cards Horizontal Stack */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {services.map((service, index) => {
+              const Icon = service.icon
+              const isActive = index === currentIndex
+              const isPrev = index === (currentIndex - 1 + services.length) % services.length
+              const isNext = index === (currentIndex + 1) % services.length
+              
+              let position = 'hidden'
+              let transform = 'translate-x-0'
+              let scale = 'scale-75'
+              let opacity = 'opacity-0'
+              let zIndex = 'z-10'
+              
+              if (isActive) {
+                position = 'block'
+                transform = 'translate-x-0'
+                scale = 'scale-100'
+                opacity = 'opacity-100'
+                zIndex = 'z-20'
+              } else if (isPrev) {
+                position = 'block'
+                transform = '-translate-x-[280px]'
+                scale = 'scale-75'
+                opacity = 'opacity-60'
+                zIndex = 'z-10'
+              } else if (isNext) {
+                position = 'block'
+                transform = 'translate-x-[280px]'
+                scale = 'scale-75'
+                opacity = 'opacity-60'
+                zIndex = 'z-10'
+              }
 
-                return (
-                  <motion.div
-                    key={`${service.title}-${currentIndex}`}
-                    initial={{ 
-                      opacity: 0, 
-                      scale: 0.8,
-                      rotateY: isNext ? 15 : isPrev ? -15 : 0,
-                      z: isActive ? 0 : isNext ? -100 : isPrev ? -100 : -200
-                    }}
-                    animate={{ 
-                      opacity: isActive ? 1 : isPrev ? 0.3 : isNext ? 0.3 : 0,
-                      scale: isActive ? 1 : isPrev ? 0.85 : isNext ? 0.85 : 0.7,
-                      rotateY: isActive ? 0 : isNext ? 15 : isPrev ? -15 : 0,
-                      z: isActive ? 0 : isNext ? -100 : isPrev ? -100 : -200,
-                      x: isActive ? 0 : isNext ? 120 : isPrev ? -120 : 0
-                    }}
-                    exit={{ 
-                      opacity: 0, 
-                      scale: 0.8,
-                      rotateY: 25
-                    }}
-                    transition={{ 
-                      duration: 0.6,
-                      ease: [0.25, 0.46, 0.45, 0.94]
-                    }}
-                    className="absolute inset-0 w-full h-full"
-                    style={{
-                      transformStyle: 'preserve-3d'
-                    }}
-                  >
-                    <Card className={`p-8 h-full transition-all duration-600 ${
-                      isActive 
-                        ? 'shadow-2xl border-primary/20 bg-card/95 backdrop-blur-sm' 
-                        : 'shadow-lg border-border/50 bg-card/70'
-                    }`}>
-                      <div className="flex flex-col h-full">
-                        <div className="flex items-center mb-6">
-                          <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mr-4">
-                            <Icon className="h-8 w-8 text-primary" />
-                          </div>
-                          <div>
-                            <h3 className="text-2xl font-bold professional-heading">{service.title}</h3>
-                          </div>
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, scale: 0.75 }}
+                  animate={{ 
+                    opacity: isActive ? 1 : isPrev || isNext ? 0.6 : 0,
+                    scale: isActive ? 1 : 0.75,
+                    x: isActive ? 0 : isPrev ? -280 : isNext ? 280 : 0
+                  }}
+                  transition={{ 
+                    duration: 0.5,
+                    ease: [0.25, 0.46, 0.45, 0.94]
+                  }}
+                  className={`absolute inset-0 w-full max-w-md mx-auto ${position} ${zIndex}`}
+                  style={{ 
+                    left: '50%', 
+                    transform: 'translateX(-50%)',
+                    width: '400px',
+                    height: '450px'
+                  }}
+                >
+                  <Card className={`p-6 h-full transition-all duration-500 ${
+                    isActive 
+                      ? 'shadow-xl border-primary/30 bg-card/95 backdrop-blur-sm' 
+                      : 'shadow-md border-border/30 bg-card/80'
+                  }`}>
+                    <div className="flex flex-col h-full">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
+                          <Icon className="h-6 w-6 text-primary" />
                         </div>
-                        
-                        <p className="text-muted-foreground mb-8 professional-text leading-relaxed text-lg">
-                          {service.description}
-                        </p>
-                        
-                        <div className="flex-1">
-                          <div className="grid md:grid-cols-2 gap-4">
-                            {service.features.map((feature, featureIndex) => (
-                              <motion.div
-                                key={feature}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: isActive ? 1 : 0.7, x: 0 }}
-                                transition={{ delay: isActive ? featureIndex * 0.1 : 0 }}
-                                className="flex items-center text-sm text-muted-foreground"
-                              >
-                                <div className="w-2 h-2 rounded-full bg-primary mr-3 flex-shrink-0"></div>
-                                {feature}
-                              </motion.div>
-                            ))}
-                          </div>
-                        </div>
-                        
-                        <div className="mt-8 pt-6 border-t border-border/50">
-                          <Button 
-                            variant="outline" 
-                            size="lg" 
-                            onClick={scrollToContact} 
-                            className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary"
-                          >
-                            Learn More
-                          </Button>
+                        <h3 className="text-lg font-bold professional-heading">{service.title}</h3>
+                      </div>
+                      
+                      <p className="text-muted-foreground mb-6 professional-text leading-relaxed text-sm">
+                        {service.description}
+                      </p>
+                      
+                      <div className="flex-1">
+                        <div className="space-y-2">
+                          {service.features.slice(0, 4).map((feature, featureIndex) => (
+                            <motion.div
+                              key={feature}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: isActive ? 1 : 0.7, x: 0 }}
+                              transition={{ delay: isActive ? featureIndex * 0.05 : 0 }}
+                              className="flex items-center text-xs text-muted-foreground"
+                            >
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary mr-2 flex-shrink-0"></div>
+                              {feature}
+                            </motion.div>
+                          ))}
                         </div>
                       </div>
-                    </Card>
-                  </motion.div>
-                )
-              })}
-            </AnimatePresence>
+                      
+                      <div className="mt-6 pt-4 border-t border-border/50">
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          onClick={scrollToContact} 
+                          className="w-full border-primary/30 hover:bg-primary/10 hover:border-primary"
+                        >
+                          Learn More
+                        </Button>
+                      </div>
+                    </div>
+                  </Card>
+                </motion.div>
+              )
+            })}
           </div>
 
           {/* Dots Indicator */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
             {services.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex 
                     ? 'bg-primary scale-125' 
                     : 'bg-primary/30 hover:bg-primary/50'
