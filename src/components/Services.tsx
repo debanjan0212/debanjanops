@@ -92,7 +92,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 professional-heading">
             My <span className="text-primary">Services</span>
@@ -102,9 +102,9 @@ const Services = () => {
           </p>
         </motion.div>
 
-        {/* Horizontal Stack Carousel - Centered */}
+        {/* Horizontal Stack Carousel - Centered & Fixed Height */}
         <div 
-          className="relative h-[400px] md:h-[500px] mb-12 overflow-hidden flex items-center justify-center"
+          className="relative h-[450px] md:h-[500px] mb-12 overflow-hidden flex items-center justify-center"
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
         >
@@ -184,7 +184,7 @@ const Services = () => {
                               key={feature}
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: isActive ? 1 : 0.7, x: 0 }}
-                              transition={{ delay: isActive ? featureIndex * 0.05 : 0 }}
+                              transition={{ delay: isActive ? featureIndex * 0.1 : 0, duration: 0.5 }}
                               className="flex items-center text-xs text-muted-foreground"
                             >
                               <div className="w-1.5 h-1.5 rounded-full bg-primary mr-2 flex-shrink-0"></div>

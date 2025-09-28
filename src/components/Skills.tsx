@@ -108,6 +108,22 @@ const Skills = () => {
     }
   ];
 
+  const handleSkillClick = (skill: any) => {
+    setSelectedSkill({
+      ...skill,
+      category: skill.category,
+      categoryColor: skill.categoryColor
+    })
+    
+    // Scroll to center the modal in viewport
+    setTimeout(() => {
+      window.scrollTo({
+        top: window.scrollY + window.innerHeight / 2 - 300,
+        behavior: 'smooth'
+      })
+    }, 100)
+  }
+
   return (
     <section id="skills" className="py-12 px-4 relative z-10 overflow-hidden gpu-accelerated">
       {/* Parallax Background */}
@@ -145,8 +161,8 @@ const Skills = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ 
-                  duration: 0.6, 
-                  delay: categoryIndex * 0.1
+                  duration: 0.8, 
+                  delay: categoryIndex * 0.3
                 }}
                 className="flex flex-col"
               >
@@ -175,10 +191,10 @@ const Skills = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                         transition={{ 
-                          duration: 0.3, 
-                          delay: categoryIndex * 0.1 + skillIndex * 0.05 
+                          duration: 1.2, 
+                          delay: categoryIndex * 0.4 + skillIndex * 0.2 
                         }}
-                        onClick={() => setSelectedSkill({
+                        onClick={() => handleSkillClick({
                           ...skill,
                           category: category.title,
                           categoryColor: category.color
@@ -204,7 +220,7 @@ const Skills = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
           className="grid md:grid-cols-4 gap-6"
         >
           <Card className="p-6 text-center hover-elevate transition-all duration-300">
@@ -238,7 +254,7 @@ const Skills = () => {
         </motion.div>
       </motion.div>
 
-      {/* Individual Skill Detail Modal */}
+      {/* Individual Skill Detail Modal - Centered in Viewport */}
       <AnimatePresence>
         {selectedSkill && (
           <motion.div
@@ -253,7 +269,7 @@ const Skills = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-card border border-border rounded-2xl p-8 max-w-md w-full"
+              className="bg-card border border-border rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-6">
