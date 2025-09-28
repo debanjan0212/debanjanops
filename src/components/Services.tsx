@@ -257,23 +257,6 @@ const Services = () => {
           </Card>
         </motion.div>
 
-        {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center"
-        >
-          <Card className="p-8 bg-gradient-to-r from-primary/5 to-purple-500/5 border-primary/20">
-            <h3 className="text-2xl font-bold mb-4 professional-heading">Start a Conversation</h3>
-            <p className="text-muted-foreground mb-6 professional-text max-w-2xl mx-auto">
-              Ready to optimize your infrastructure and streamline your DevOps processes? Let's discuss your project requirements.
-            </p>
-            <Button size="lg" onClick={scrollToContact} className="bg-primary hover:bg-primary/90">
-              Get Started
-            </Button>
-          </Card>
-        </motion.div>
       </div>
     </section>
   );
