@@ -511,26 +511,9 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="relative flex justify-center lg:justify-end items-center"
             >
-              {/* Gradient background that extends behind the image */}
-              <div 
-                className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-72 h-48 sm:w-80 sm:h-56 md:w-96 md:h-64 lg:w-[420px] lg:h-72 rounded-full"
-                style={{
-                  background: 'linear-gradient(135deg, #FDF6E3 0%, #F5E6D3 30%, #E8D5B7 60%, #D4AC7A 90%)',
-                  filter: 'blur(30px)',
-                  opacity: 0.4,
-                  zIndex: 0
-                }}
-              />
-              
-              {/* Professional portrait */}
-              <motion.img
-                src="https://i.postimg.cc/zGS3tZ3N/IMG-4625-removebg-preview.png"
-                alt="Debanjan Das - Professional Portrait"
-                className="w-48 h-60 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-2xl"
-                style={{
-                  filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3))',
-                  background: 'transparent'
-                }}
+              {/* Professional portrait with fade effect */}
+              <motion.div
+                className="relative"
                 animate={{
                   y: [0, -10, 0],
                   x: [0, 5, 0, -5, 0]
@@ -540,8 +523,20 @@ const Hero = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                data-testid="img-professional-portrait"
-              />
+              >
+                <motion.img
+                  src="https://i.postimg.cc/zGS3tZ3N/IMG-4625-removebg-preview.png"
+                  alt="Debanjan Das - Professional Portrait"
+                  className="w-48 h-60 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[500px] object-cover object-center relative z-10 rounded-2xl"
+                  style={{
+                    filter: 'drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3))',
+                    background: 'transparent',
+                    maskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 70%, transparent 100%)'
+                  }}
+                  data-testid="img-professional-portrait"
+                />
+              </motion.div>
             </motion.div>
 
           </div>
