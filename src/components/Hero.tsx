@@ -485,22 +485,25 @@ const Hero = () => {
                   </div>
                 </Button>
 
-                {/* Resume Button - Coming Soon */}
-                <Button
-                  variant="outline"
-                  size="sm"
-                  disabled
-                  className="relative border-2 border-amber-500/50 text-amber-300 bg-amber-500/10 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold shadow-lg transition-all duration-300 rounded-full cursor-not-allowed opacity-60"
-                  data-testid="button-resume"
+                {/* Resume Button - Download */}
+                <a 
+                  href="/Debanjan_Das_Resume_Oct2025.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Debanjan_Das_Resume_Oct2025.pdf"
                 >
-                  <div className="flex items-center gap-2">
-                    <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-                    RESUME
-                  </div>
-                  <div className="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs px-2 py-0.5 rounded-full font-bold">
-                    SOON
-                  </div>
-                </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-2 border-green-500/50 text-green-300 hover:bg-green-500/10 hover:border-green-400/60 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base font-semibold shadow-lg transition-all duration-300 rounded-full hover:shadow-xl transform hover:scale-105 bg-green-500/5"
+                    data-testid="button-resume"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+                      RESUME
+                    </div>
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
 
